@@ -2,7 +2,7 @@
 
 硅基火花 · 半导体工程师的个人主页
 
-- 网址（开启 Pages 后）：https://blackhacher.github.io/small-wafer
+- 网址（开启 Pages 后）：https://chenggui-hu.github.io/small-wafer
 - 托管：GitHub Pages（纯静态，无需构建）
 
 ## 目录结构
