@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>硅基火花 · 半导体工程师 | small-wafer</title>
+  <meta name="description" content="硅基火花 · 半导体工程师，分享半导体技术与工程实战。公众号文章、常用软件集、常用网页集，关注微信公众号「硅基火花」与小红书「small wafer」。" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 背景音乐：把音乐文件放到 assets/bgm.mp3 即可；下方按钮控制播放/暂停 -->
+  <audio id="bgm" loop preload="auto">
+    <source src="assets/bgm.mp3" type="audio/mpeg" />
+  </audio>
+  <button class="music-btn" id="musicBtn" aria-label="背景音乐开关" title="背景音乐">🎵</button>
+
+  <!-- 顶部导航 -->
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-chip">◍</span> small-wafer
+      </a>
+      <nav class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#articles">文章</a>
+        <a href="#tools">工具</a>
+        <a href="#webapps">网页</a>
+        <a href="#social">关注</a>
+        <a class="nav-cta" href="https://github.com/blackhacher" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">SEMICONDUCTOR ENGINEER</p>
+      <h1 class="hero-title">硅基火花<br />半导体工程师</h1>
+      <p class="hero-sub">半导体技术 · 工程实战 · Python 自动化</p>
+      <p class="hero-tagline">在硅基世界里，点燃一点火花。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#articles">📝 看文章</a>
+        <a class="btn btn-ghost" href="#social">🔗 关注我</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <span class="section-kicker">ABOUT</span>
+      <h2>关于我</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card about-bio">
+        <p>
+          <strong>半导体工程师</strong>，日常围绕晶圆良率测试做异常分析、工艺理解与工程数据处理；
+          同时用 Python 把重复劳动自动化。目标是搭建一套可复用的工程方法论与工具链，
+          让经验不只停在脑子里，也能落在代码和流程里。
+        </p>
+        <p class="about-note">学习方式：用真实 case 反向推演器件物理，不单独啃书。</p>
+      </div>
+      <div class="about-card about-skills">
+        <h3>技能坐标</h3>
+        <ul class="tag-list">
+          <li>半导体良率分析</li>
+          <li>器件物理</li>
+          <li>工艺模块 FEOL/MOL/BEOL</li>
+          <li>测量系统架构</li>
+          <li>Python 自动化</li>
+          <li>工程数据分析</li>
+          <li>数据可视化</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 公众号文章（原 B站课程替换） -->
+  <section class="section section-alt" id="articles">
+    <div class="section-head">
+      <span class="section-kicker">WECHAT ARTICLES</span>
+      <h2>公众号文章</h2>
+    </div>
+    <p class="section-lead">
+      同步发布在「硅基火花」微信公众号，碎片化记录半导体知识与工程实战。
+    </p>
+
+    <div class="article-list">
+      <!-- 文章卡片：复制 .article 块即可新增一篇 -->
+      <article class="article">
+        <time class="article-date">2026 · 08 · 02</time>
+        <div class="article-body">
+          <h3>晶圆良率异常分析：从一次漏电说起</h3>
+          <p>从真实 case 反推 GIDL / BTBT，聊聊半导体工程师怎么看"漏"。</p>
+          <a class="article-link" href="#" target="_blank" rel="noopener">阅读全文 →</a>
+        </div>
+      </article>
+      <article class="article">
+        <time class="article-date">2026 · 07 · 18</time>
+        <div class="article-body">
+          <h3>器件物理怎么学才不痛苦</h3>
+          <p>一个工程师的笨办法：不啃书，拿真实漏电 case 反向推 GIDL / BTBT。</p>
+          <a class="article-link" href="#" target="_blank" rel="noopener">阅读全文 →</a>
+        </div>
+      </article>
+      <article class="article">
+        <time class="article-date">2026 · 07 · 03</time>
+        <div class="article-body">
+          <h3>用 Python 把测试数据自动化</h3>
+          <p>从手动拉数到一键出图，聊聊工程师怎么用 Python 把力气省下来。</p>
+          <a class="article-link" href="#" target="_blank" rel="noopener">阅读全文 →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 常用软件集 -->
+  <section class="section" id="tools">
+    <div class="section-head">
+      <span class="section-kicker">TOOLBOX</span>
+      <h2>常用软件集</h2>
+    </div>
+    <p class="section-lead">工作与日常离不开的桌面软件，按场景归类。点卡片直达官网。</p>
+
+    <div class="tools-grid">
+      <a class="tool-card" href="https://www.keysight.com" target="_blank" rel="noopener">
+        <span class="tool-emoji">🔬</span>
+        <div><h3>IC-CAP / WaferPro</h3><p>半导体参数提取</p></div>
+      </a>
+      <a class="tool-card" href="https://www.originlab.com" target="_blank" rel="noopener">
+        <span class="tool-emoji">📊</span>
+        <div><h3>Origin</h3><p>工程数据绘图</p></div>
+      </a>
+      <a class="tool-card" href="https://www.mathworks.com" target="_blank" rel="noopener">
+        <span class="tool-emoji">🧮</span>
+        <div><h3>MATLAB</h3><p>数值计算与仿真</p></div>
+      </a>
+      <a class="tool-card" href="https://www.synopsys.com" target="_blank" rel="noopener">
+        <span class="tool-emoji">⚙️</span>
+        <div><h3>Sentaurus / ADS</h3><p>TCAD 器件仿真</p></div>
+      </a>
+      <a class="tool-card" href="https://code.visualstudio.com" target="_blank" rel="noopener">
+        <span class="tool-emoji">💻</span>
+        <div><h3>VSCode</h3><p>代码编辑器</p></div>
+      </a>
+      <a class="tool-card" href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener">
+        <span class="tool-emoji">🐍</span>
+        <div><h3>PyCharm</h3><p>Python IDE</p></div>
+      </a>
+      <a class="tool-card" href="https://obsidian.md" target="_blank" rel="noopener">
+        <span class="tool-emoji">📝</span>
+        <div><h3>Obsidian</h3><p>本地知识库</p></div>
+      </a>
+      <a class="tool-card" href="https://typora.io" target="_blank" rel="noopener">
+        <span class="tool-emoji">✍️</span>
+        <div><h3>Typora</h3><p>Markdown 写作</p></div>
+      </a>
+      <a class="tool-card" href="https://www.snipaste.com" target="_blank" rel="noopener">
+        <span class="tool-emoji">📸</span>
+        <div><h3>Snipaste</h3><p>截图 + 贴图</p></div>
+      </a>
+      <a class="tool-card" href="https://www.voidtools.com" target="_blank" rel="noopener">
+        <span class="tool-emoji">🔍</span>
+        <div><h3>Everything</h3><p>秒级文件搜索</p></div>
+      </a>
+      <a class="tool-card" href="https://potplayer.daum.net" target="_blank" rel="noopener">
+        <span class="tool-emoji">🎬</span>
+        <div><h3>PotPlayer</h3><p>视频播放器</p></div>
+      </a>
+      <a class="tool-card" href="https://7-zip.org" target="_blank" rel="noopener">
+        <span class="tool-emoji">🗜️</span>
+        <div><h3>7-Zip</h3><p>压缩解压</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 常用网页集 -->
+  <section class="section section-alt" id="webapps">
+    <div class="section-head">
+      <span class="section-kicker">WEB TOOLBOX</span>
+      <h2>常用网页集</h2>
+    </div>
+    <p class="section-lead">日常打开最多的在线工具与平台，按场景整理。</p>
+
+    <div class="webapps-grid">
+      <div class="webapp-group">
+        <h3>🤖 AI 助手</h3>
+        <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a>
+        <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>
+        <a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity（搜索）</a>
+      </div>
+      <div class="webapp-group">
+        <h3>💻 技术社区</h3>
+        <a href="https://www.zhihu.com" target="_blank" rel="noopener">知乎</a>
+        <a href="https://www.csdn.net" target="_blank" rel="noopener">CSDN</a>
+        <a href="https://juejin.cn" target="_blank" rel="noopener">稀土掘金</a>
+        <a href="https://stackoverflow.com" target="_blank" rel="noopener">Stack Overflow</a>
+      </div>
+      <div class="webapp-group">
+        <h3>🎓 学习平台</h3>
+        <a href="https://www.bilibili.com" target="_blank" rel="noopener">B 站</a>
+        <a href="https://www.icourse163.org" target="_blank" rel="noopener">中国大学慕课</a>
+        <a href="https://www.coursera.org" target="_blank" rel="noopener">Coursera</a>
+        <a href="https://time.geekbang.org" target="_blank" rel="noopener">极客时间</a>
+      </div>
+      <div class="webapp-group">
+        <h3>📰 资讯</h3>
+        <a href="https://36kr.com" target="_blank" rel="noopener">36 氪</a>
+        <a href="https://www.huxiu.com" target="_blank" rel="noopener">虎嗅</a>
+        <a href="https://sspai.com" target="_blank" rel="noopener">少数派</a>
+        <a href="https://www.solidot.org" target="_blank" rel="noopener">Solidot</a>
+      </div>
+      <div class="webapp-group">
+        <h3>💼 投资</h3>
+        <a href="https://www.eastmoney.com" target="_blank" rel="noopener">东方财富</a>
+        <a href="https://xueqiu.com" target="_blank" rel="noopener">雪球</a>
+        <a href="https://www.jisilu.cn" target="_blank" rel="noopener">集思录</a>
+        <a href="https://www.fund.eastmoney.com" target="_blank" rel="noopener">天天基金</a>
+      </div>
+      <div class="webapp-group">
+        <h3>🛠 在线工具</h3>
+        <a href="https://www.deepl.com" target="_blank" rel="noopener">DeepL 翻译</a>
+        <a href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>
+        <a href="https://www.remove.bg" target="_blank" rel="noopener">Remove.bg</a>
+        <a href="https://www.photopea.com" target="_blank" rel="noopener">Photopea（PS 在线）</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关注我 -->
+  <section class="section" id="social">
+    <div class="section-head">
+      <span class="section-kicker">FOLLOW</span>
+      <h2>关注我</h2>
+    </div>
+    <p class="section-lead">更多半导体干货与日常，在这里找我。</p>
+
+    <div class="social-grid">
+      <div class="social-card">
+        <h3>💬 微信公众号</h3>
+        <p class="social-name">硅基火花</p>
+        <div class="qr-box">
+          <img src="assets/wechat-qr.png" alt="硅基火花 微信公众号二维码" />
+        </div>
+        <p class="social-tip">微信扫码关注「硅基火花」</p>
+        <a class="social-link" href="#" target="_blank" rel="noopener">或点此跳转关注 →</a>
+      </div>
+      <div class="social-card">
+        <h3>📕 小红书</h3>
+        <p class="social-name">small wafer</p>
+        <div class="social-avatar">small<br />wafer</div>
+        <p class="social-tip">半导体工程师的日常与笔记</p>
+        <a class="social-link" href="#" target="_blank" rel="noopener">点此前往小红书主页 →</a>
+      </div>
+      <div class="social-card">
+        <h3>📺 B 站</h3>
+        <p class="social-name">硅基火花</p>
+        <div class="social-avatar">B<br />站</div>
+        <p class="social-tip">视频版内容在这里</p>
+        <a class="social-link" href="#" target="_blank" rel="noopener">点此前往 B 站主页 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>© 2026 硅基火花 · <span class="brand-chip">◍</span> small-wafer</p>
+    <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
