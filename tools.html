@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常用软件集 | 硅基火花 · small-wafer</title>
+  <meta name="description" content="硅基火花常用的桌面软件清单：找东西、截图录屏、看图、播放演示、下载网盘、文档代码、清理网络。" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 背景音乐 -->
+  <audio id="bgm" preload="auto"></audio>
+
+  <!-- 顶部导航 -->
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a class="brand" href="index.html" title="回到首页">
+          <img class="brand-avatar" src="assets/avatar.jpg" alt="small wafer 头像" />
+          <span>small-wafer</span>
+        </a>
+        <div class="nav-music">
+          <button class="nav-music-toggle" id="navMusicToggle" aria-label="播放/暂停">▶</button>
+          <div class="nav-music-menu" id="navMusicMenu">
+            <button class="nav-music-track active" data-src="assets/bgm.mp3">曲 1</button>
+            <button class="nav-music-track" data-src="assets/bgm-2.mp3">曲 2</button>
+            <button class="nav-music-track" data-src="assets/bgm-3.mp3">曲 3</button>
+          </div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="index.html#about">关于</a>
+          <a href="index.html#articles">文章</a>
+          <a href="index.html#webapps">网页</a>
+          <a href="tools.html">工具</a>
+          <a href="index.html#social">关注</a>
+          <a class="nav-cta" href="https://github.com/chenggui-hu" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+        <div class="nav-countdown" id="navCountdown">
+          <span class="countdown-date">--/--</span>
+          <span class="countdown-days">--</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section class="hero hero-small">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">TOOLBOX</p>
+      <h1 class="hero-title">常用软件集</h1>
+      <p class="hero-tagline">工作与日常离不开的桌面软件，按场景归类。</p>
+    </div>
+  </section>
+
+  <!-- 常用软件集 -->
+  <section class="section section-alt" id="tools">
+    <div class="section-head">
+      <span class="section-kicker">TOOLBOX</span>
+      <h2>我的装机清单</h2>
+    </div>
+    <p class="section-lead">工作与日常离不开的桌面软件，按场景归类。这是个清单，不是教程。</p>
+
+    <div class="tool-categories">
+      <div class="tool-category">
+        <h3>一、找东西</h3>
+        <div class="tool-items">
+          <div class="tool-item">
+            <h4><a href="https://www.voidtools.com" target="_blank" rel="noopener">Everything</a></h4>
+            <p>装机第一件事就装上的软件。Windows 自带的搜索每次都让人怀疑电脑没装固态，换上 Everything，输入文件名秒出结果，连隐藏文件都能搜到。</p>
+          </div>
+          <div class="tool-item">
+            <h4><a href="https://7-zip.org" target="_blank" rel="noopener">7-Zip</a></h4>
+            <p>开源瑞士军刀，命令行友好。不到 10MB，压缩解压干净利索。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-category">
+        <h3>二、截图录屏</h3>
+        <div class="tool-items">
+          <div class="tool-item">
+            <h4><a href="https://www.snipaste.com" target="_blank" rel="noopener">Snipaste</a></h4>
+            <p>用了五年的截图工具。F1 截图、F3 贴图，截图后可以钉在屏幕上对照着写东西。改颜色、加箭头、加马赛克，几秒搞定。</p>
+          </div>
+          <div class="tool-item">
+            <h4>PixPin</h4>
+            <p>后起之秀，长截图、滚动截图、GIF 录制都很好用。两个互补，Snipaste 处理静态标注，PixPin 处理长内容。</p>
+          </div>
+          <div class="tool-item">
+            <h4><a href="https://www.bandicam.com" target="_blank" rel="noopener">Bandicam</a></h4>
+            <p>录游戏和高帧率操作，画质可控，体积小。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-category">
+        <h3>三、看图</h3>
+        <div class="tool-items">
+          <div class="tool-item">
+            <h4><a href="https://www.irfanview.com" target="_blank" rel="noopener">IrfanView</a></h4>
+            <p>Windows 上最被低估的软件之一。不到 5MB，却能打开几乎所有图片格式，批量重命名、批量转格式，速度飞快。日常看图、修图、轻度处理都用它。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-category">
+        <h3>四、播放和演示</h3>
+        <div class="tool-items">
+          <div class="tool-item">
+            <h4><a href="https://potplayer.daum.net" target="_blank" rel="noopener">PotPlayer</a></h4>
+            <p>本地视频播放的事实标准。解码全、设置细、支持外挂字幕。装了它，Windows 自带播放器基本可以卸载。</p>
+          </div>
+          <div class="tool-item">
+            <h4><a href="https://docs.microsoft.com/sysinternals/downloads/zoomit" target="_blank" rel="noopener">ZoomIt</a></h4>
+            <p>微软出品的小工具。Ctrl+1 放大屏幕、Ctrl+2 进入标注模式、Ctrl+3 进入白板模式。直播、录课、会议分享都用得上。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-category">
+        <h3>五、下载和网盘</h3>
+        <div class="tool-items">
+          <div class="tool-item">
+            <h4><a href="https://www.internetdownloadmanager.com" target="_blank" rel="noopener">IDM</a></h4>
+            <p>Windows 下载管理的老大哥。多线程、断点续传、浏览器集成，下载大文件基本用它。配合浏览器插件，几乎所有下载场景都能接管。</p>
+          </div>
+          <div class="tool-item">
+            <h4>夸克网盘</h4>
+            <p>88VIP 附赠的会员，海鲜市场 10￥/年。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-category">
+        <h3>六、文档和代码</h3>
+        <div class="tool-items">
+          <div class="tool-item">
+            <h4><a href="https://www.wps.cn" target="_blank" rel="noopener">WPS</a></h4>
+            <p>日常文档的主力。从 Word、Excel 到 PDF、流程图，一个软件搞定。</p>
+          </div>
+          <div class="tool-item">
+            <h4><a href="https://www.python.org" target="_blank" rel="noopener">Python</a> + <a href="https://code.visualstudio.com" target="_blank" rel="noopener">VS Code</a></h4>
+            <p>写代码的活。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-category">
+        <h3>七、清理和网络</h3>
+        <div class="tool-items">
+          <div class="tool-item">
+            <h4><a href="https://geekuninstaller.com" target="_blank" rel="noopener">Geek Uninstaller</a></h4>
+            <p>干净卸载的工具。Windows 自带的卸载经常留一堆残留，它能扫干净注册表和文件夹。体积小、免安装、免费。</p>
+          </div>
+          <div class="tool-item">
+            <h4>Clash party</h4>
+            <p>网络工具，开源、可视化、规则丰富。具体怎么用，懂的自然懂；不懂也别问，这是个清单不是教程。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>© 2026 硅基火花 · <span class="brand-chip">◍</span> small-wafer</p>
+    <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

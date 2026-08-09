@@ -1,12 +1,14 @@
 // small-wafer 个人主页 · 交互脚本
-// 1) 导航高亮：滚动到对应区块时高亮菜单
-// 2) 滚动渐显：区块进入视口时淡入
+// 1) 导航高亮
+// 2) 滚动渐显
+// 3) 导航音乐播放器
+// 4) 今年剩余天数倒计时
 
 (function () {
   "use strict";
 
   // ---- 滚动渐显 ----
-  var revealEls = document.querySelectorAll(".section, .article, .tool-card, .webapp-group, .about-card, .social-card");
+  var revealEls = document.querySelectorAll(".section, .article, .webapp-group, .about-card, .social-card, .tool-category");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(
       function (entries) {
@@ -27,7 +29,21 @@
 
   // ---- 导航高亮 ----
   var sections = document.querySelectorAll("section[id]");
-  var navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+  var navLinks = document.querySelectorAll(".nav-links a[href]");
+  var currentPath = window.location.pathname;
+
+  // 当前页面高亮（tools.html 等子页面）
+  navLinks.forEach(function (a) {
+    var href = a.getAttribute("href");
+    if (!href) return;
+    if (href.indexOf(".html") > -1) {
+      if (currentPath.indexOf(href) > -1) {
+        a.classList.add("active");
+      }
+    }
+  });
+
+  // 滚动区块高亮
   if ("IntersectionObserver" in window && sections.length) {
     var navIo = new IntersectionObserver(
       function (entries) {
@@ -35,7 +51,8 @@
           if (entry.isIntersecting) {
             var id = entry.target.getAttribute("id");
             navLinks.forEach(function (a) {
-              a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+              var href = a.getAttribute("href") || "";
+              a.classList.toggle("active", href === "#" + id);
             });
           }
         });
@@ -45,26 +62,104 @@
     sections.forEach(function (s) { navIo.observe(s); });
   }
 
-  // ---- 背景音乐开关 ----
+  // ---- 倒计时 ----
+  function updateCountdown() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var endOfYear = new Date(year, 11, 31, 23, 59, 59);
+    var diff = endOfYear - now;
+    var days = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+    var month = now.getMonth() + 1;
+    var date = now.getDate();
+    var dateStr = (month < 10 ? "0" : "") + month + "/" + (date < 10 ? "0" : "") + date;
+
+    var countdownEl = document.getElementById("navCountdown");
+    if (countdownEl) {
+      var dateSpan = countdownEl.querySelector(".countdown-date");
+      var daysSpan = countdownEl.querySelector(".countdown-days");
+      if (dateSpan) dateSpan.textContent = dateStr;
+      if (daysSpan) daysSpan.textContent = year + " 还剩 " + days + " 天";
+    }
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  // ---- 导航音乐播放器 ----
   var bgm = document.getElementById("bgm");
-  var musicBtn = document.getElementById("musicBtn");
-  if (bgm && musicBtn) {
+  var musicToggle = document.getElementById("navMusicToggle");
+  var musicMenu = document.getElementById("navMusicMenu");
+  var musicTracks = document.querySelectorAll(".nav-music-track");
+
+  if (bgm && musicToggle && musicTracks.length) {
+    var currentSrc = "";
     var playing = false;
-    musicBtn.addEventListener("click", function () {
+
+    function selectTrack(btn) {
+      var src = btn.getAttribute("data-src");
+      if (!src) return;
+
+      if (currentSrc !== src) {
+        bgm.pause();
+        bgm.src = src;
+        currentSrc = src;
+        bgm.load();
+        playing = false;
+      }
+
+      musicTracks.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+
+      var p = bgm.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          playing = false;
+          updateMusicUI();
+        });
+      }
+      playing = true;
+      updateMusicUI();
+    }
+
+    function updateMusicUI() {
+      musicToggle.textContent = playing ? "⏸" : "▶";
+      musicToggle.classList.toggle("playing", playing);
+    }
+
+    musicTracks.forEach(function (btn) {
+      btn.addEventListener("click", function () { selectTrack(btn); });
+    });
+
+    musicToggle.addEventListener("click", function () {
+      if (!currentSrc && musicTracks.length) {
+        selectTrack(musicTracks[0]);
+        return;
+      }
       if (playing) {
         bgm.pause();
-        musicBtn.classList.remove("playing");
+        playing = false;
       } else {
         var p = bgm.play();
         if (p && p.catch) {
-          p.catch(function () {
-            // 浏览器可能因缺少音频文件或自动播放策略而拒绝，静默处理
-            musicBtn.classList.remove("playing");
-          });
+          p.catch(function () { playing = false; });
         }
-        musicBtn.classList.add("playing");
+        playing = true;
       }
-      playing = !playing;
+      updateMusicUI();
     });
+
+    bgm.addEventListener("ended", function () {
+      playing = false;
+      updateMusicUI();
+    });
+
+    // 移动端：点击 toggle 也展开菜单
+    musicToggle.addEventListener("mouseenter", function () {
+      if (musicMenu) musicMenu.classList.add("open");
+    });
+    if (musicMenu) {
+      musicMenu.addEventListener("mouseleave", function () {
+        musicMenu.classList.remove("open");
+      });
+    }
   }
 })();
