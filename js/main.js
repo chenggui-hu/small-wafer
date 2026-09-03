@@ -62,6 +62,28 @@
     sections.forEach(function (s) { navIo.observe(s); });
   }
 
+  // ---- 导航下拉菜单（点击展开，点击外部关闭） ----
+  var drops = document.querySelectorAll(".nav-drop");
+  drops.forEach(function (drop) {
+    var btn = drop.querySelector(".nav-drop-btn");
+    if (!btn) return;
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      drops.forEach(function (d) {
+        if (d !== drop) d.classList.remove("open");
+      });
+      drop.classList.toggle("open");
+    });
+    drop.querySelectorAll(".nav-drop-menu a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        drop.classList.remove("open");
+      });
+    });
+  });
+  document.addEventListener("click", function () {
+    drops.forEach(function (d) { d.classList.remove("open"); });
+  });
+
   // ---- 倒计时 ----
   function updateCountdown() {
     var now = new Date();

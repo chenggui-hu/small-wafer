@@ -155,6 +155,52 @@ a { color: inherit; text-decoration: none; }
 .nav-links a:hover { color: var(--brand); }
 .nav-links a.active { color: var(--brand); font-weight: 700; }
 
+/* 导航下拉菜单 */
+.nav-drop { position: relative; }
+.nav-drop-btn {
+  display: flex; align-items: center; gap: 4px;
+  background: none; border: none; cursor: pointer;
+  color: var(--ink-soft); font-size: 0.86rem; font-weight: 500;
+  font-family: inherit;
+  padding: 0;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-drop-btn:hover, .nav-drop.open .nav-drop-btn { color: var(--brand); }
+.nav-drop .caret { font-size: 0.7rem; transition: transform .2s; }
+.nav-drop.open .caret { transform: rotate(180deg); }
+.nav-drop-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 160px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .2s ease;
+  z-index: 60;
+}
+.nav-drop.open .nav-drop-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-drop-menu a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  white-space: nowrap;
+  transition: all .15s ease;
+}
+.nav-drop-menu a:hover { background: #eef2f7; color: var(--brand); }
+
 /* 滚动渐显 */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in-view { opacity: 1; transform: none; }
@@ -176,13 +222,13 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   overflow: hidden;
   color: #fff;
-  padding: 60px 24px 50px;
+  padding: 34px 24px 30px;
   background:
     linear-gradient(180deg, rgba(15,23,42,0.40) 0%, rgba(15,23,42,0.65) 55%, rgba(15,23,42,0.85) 100%),
     url('../assets/hero-bg.jpg') center/cover no-repeat;
   background-color: #0f172a;
 }
-.hero-small { padding: 50px 24px 40px; }
+.hero-small { padding: 34px 24px 28px; }
 .hero-small .hero-title { font-size: clamp(1.8rem, 5vw, 2.8rem); }
 .hero-grid {
   position: absolute;
@@ -204,10 +250,10 @@ a { color: inherit; text-decoration: none; }
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 .hero-motto {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #fde6d4;
-  margin: 0 0 10px;
-  font-weight: 500;
+  margin: 0 0 20px;
+  font-weight: 600;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   letter-spacing: 2px;
 }
@@ -241,7 +287,7 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost  { background: rgba(255,255,255,.10); color: #fff; border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(4px); }
 
 /* ---------- 通用 section ---------- */
-.section { max-width: var(--maxw); margin: 0 auto; padding: 84px 24px; }
+.section { max-width: var(--maxw); margin: 0 auto; padding: 40px 24px 56px; }
 .section-alt { background: var(--surface); border-radius: 28px; margin: 40px auto; box-shadow: var(--shadow); }
 .section-head { margin-bottom: 14px; }
 .section-kicker { font-size: 0.8rem; letter-spacing: 3px; color: var(--brand); font-weight: 700; }
@@ -371,6 +417,7 @@ a { color: inherit; text-decoration: none; }
   .about-grid { grid-template-columns: 1fr; }
   .nav-links { gap: 12px; }
   .nav-links a:not(.nav-cta) { display: none; }
+  .nav-drop { display: none; }
   .nav-music { display: none; }
   .hero { padding: 50px 20px 40px; }
   .section { padding: 60px 20px; }
