@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>硅基火花 | small-wafer</title>
   <meta name="description" content="硅基火花 · 半导体工程师，分享半导体技术与工程实战。公众号文章、常用网页集，关注微信公众号「硅基火花」与小红书「small wafer"。" />
-  <link rel="stylesheet" href="css/style.css?v=20260903a" />
+  <link rel="stylesheet" href="css/style.css?v=20260913a" />
 </head>
 <body>
   <!-- 背景音乐 -->
@@ -75,9 +75,16 @@
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
       <p class="hero-motto">花有重开日，人无再少年</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#articles">📝 看文章</a>
-        <a class="btn btn-ghost" href="#social">🔗 关注我</a>
+      <div class="hero-search">
+        <div class="search-tabs">
+          <button class="search-tab active" data-mode="wechat" type="button">公众号搜索</button>
+          <button class="search-tab" data-mode="scihub" type="button">Sci-Hub 文献</button>
+        </div>
+        <form class="search-bar" id="heroSearch" role="search">
+          <input class="search-input" id="searchInput" type="text" autocomplete="off"
+            placeholder="输入关键词，搜索微信公众号文章" />
+          <button class="search-btn" type="submit" aria-label="搜索">🔍</button>
+        </form>
       </div>
     </div>
   </section>
@@ -150,6 +157,6 @@
     <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
   </footer>
 
-  <script src="js/main.js?v=20260903a"></script>
+  <script src="js/main.js?v=20260913a"></script>
 </body>
 </html>

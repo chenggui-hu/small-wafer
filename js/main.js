@@ -184,4 +184,42 @@
       });
     }
   }
+
+  // ---- Hero 搜索框（公众号 / Sci-Hub） ----
+  var searchForm = document.getElementById("heroSearch");
+  if (searchForm) {
+    var searchMode = "wechat";
+    var searchInput = document.getElementById("searchInput");
+    var tabs = searchForm.parentElement.querySelectorAll(".search-tab");
+
+    var placeholders = {
+      wechat: "输入关键词，搜索微信公众号文章",
+      scihub: "输入 DOI（如 10.1038/s41586-020-2649-2）"
+    };
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (t) { t.classList.remove("active"); });
+        tab.classList.add("active");
+        searchMode = tab.getAttribute("data-mode");
+        searchInput.placeholder = placeholders[searchMode];
+        searchInput.focus();
+      });
+    });
+
+    searchForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var q = searchInput.value.trim();
+      if (!q) { searchInput.focus(); return; }
+      var url;
+      if (searchMode === "scihub") {
+        // Sci-Hub：直接拼 DOI，去掉空格
+        url = "https://sci-hub.se/" + encodeURIComponent(q.replace(/\s+/g, ""));
+      } else {
+        // 搜狗微信搜索：type=2 文章
+        url = "https://weixin.sogou.com/weixin?type=2&query=" + encodeURIComponent(q);
+      }
+      window.open(url, "_blank", "noopener");
+    });
+  }
 })();

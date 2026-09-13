@@ -273,6 +273,42 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+/* ---------- Hero 搜索框 ---------- */
+.hero-search { max-width: 620px; margin: 0 auto; }
+.search-tabs { display: flex; justify-content: center; gap: 26px; margin-bottom: 14px; }
+.search-tab {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,.75);
+  padding: 2px 4px 6px; position: relative;
+  font-family: inherit; transition: color .2s;
+}
+.search-tab:hover { color: #fff; }
+.search-tab.active { color: #fff; }
+.search-tab.active::after {
+  content: ""; position: absolute; left: 15%; right: 15%; bottom: 0;
+  height: 8px; background: rgba(253, 230, 150, .8); border-radius: 4px; z-index: -1;
+}
+.search-tab.active { z-index: 1; }
+.search-bar {
+  display: flex; align-items: stretch;
+  background: #fff; border-radius: 14px;
+  padding: 6px; box-shadow: 0 10px 34px rgba(0,0,0,.35);
+}
+.search-input {
+  flex: 1; border: none; outline: none;
+  font-size: 1rem; padding: 10px 14px;
+  color: var(--ink); background: transparent;
+  font-family: inherit; min-width: 0;
+}
+.search-input::placeholder { color: #9aa6b2; }
+.search-btn {
+  width: 52px; border: none; cursor: pointer;
+  background: #1e2a78; color: #fff;
+  border-radius: 10px; font-size: 1.15rem;
+  transition: background .2s, transform .15s;
+}
+.search-btn:hover { background: var(--brand-2); transform: scale(1.04); }
+
 .btn {
   display: inline-block;
   padding: 10px 22px;
