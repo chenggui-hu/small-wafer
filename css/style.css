@@ -366,13 +366,30 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- 公众号文章 ---------- */
 .article-list { display: flex; flex-direction: column; gap: 16px; }
-.article {
-  display: flex; gap: 24px; align-items: flex-start;
+.article-item {
+  display: flex; gap: 20px; align-items: flex-start;
   background: var(--bg); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 22px 24px; transition: border-color .2s, transform .15s;
+  border-radius: var(--radius); padding: 20px 22px; transition: border-color .2s, transform .15s;
 }
-.article:hover { border-color: var(--brand); transform: translateY(-2px); }
-.article-body h3 { margin: 0 0 8px; font-size: 1.15rem; line-height: 1.45; }
+.article-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.article-item .article-body { flex: 1; min-width: 0; }
+.article-item h3 { margin: 0 0 8px; font-size: 1.1rem; line-height: 1.45; }
+.article-item h3 a { color: var(--ink); transition: color .2s; }
+.article-item h3 a:hover { color: var(--brand); }
+.article-digest {
+  margin: 0 0 12px; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.65;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.article-meta { display: flex; gap: 16px; color: var(--ink-faint); font-size: 0.85rem; }
+.article-thumb {
+  width: 132px; height: 92px; border-radius: 10px; object-fit: cover;
+  flex-shrink: 0; border: 1px solid var(--line); background: #fff;
+}
+.article-thumb-hidden { display: none; }
+@media (max-width: 640px) {
+  .article-thumb { width: 96px; height: 72px; }
+  .article-item { padding: 16px; gap: 14px; }
+}
 .article-link { color: var(--brand-2); font-weight: 600; font-size: 0.92rem; }
 
 /* ---------- 常用网页集 ---------- */

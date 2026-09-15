@@ -255,4 +255,32 @@
       window.open(url, "_blank", "noopener");
     });
   }
+
+  // ---- 公众号文章列表：加载 assets/articles.json 动态渲染 ----
+  var articleList = document.getElementById("articleList");
+  if (articleList) {
+    function esc(s) {
+      return String(s || "").replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    fetch("assets/articles.json", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (articles) {
+        if (!Array.isArray(articles) || !articles.length) return;
+        articleList.innerHTML = articles.map(function (a) {
+          var thumb = a.thumb
+            ? '<img class="article-thumb" src="' + esc(a.thumb) + '" alt="" loading="lazy" referrerpolicy="no-referrer" />'
+            : "";
+          var meta = '<div class="article-meta"><span>' + esc(a.account || "硅基火花") + "</span>" +
+            (a.date ? "<span>" + esc(a.date) + "</span>" : "") + "</div>";
+          return '<article class="article-item">' +
+            '<div class="article-body">' +
+            '<h3><a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) + "</a></h3>" +
+            (a.digest ? '<p class="article-digest">' + esc(a.digest) + "</p>" : "") +
+            meta + "</div>" + thumb + "</article>";
+        }).join("");
+      })
+      .catch(function () { /* 加载失败保留兜底内容 */ });
+  }
 })();
