@@ -197,13 +197,16 @@
       scihub: "输入 DOI（如 10.1038/s41586-020-2649-2）"
     };
 
-    // Sci-Hub 镜像列表：按顺序探测，自动打开第一个能连上的
+    // Sci-Hub 镜像列表：后台提前探测，结果缓存；提交时同步打开窗口（避免弹窗拦截产生 about:blank）
     var sciHubMirrors = [
       "https://sci-hub.ren/",
       "https://sci-hub.ee/",
       "https://sci-hub.wf/",
       "https://sci-hub.se/"
     ];
+    var sciHubBase = sciHubMirrors[0]; // 默认镜像，探测成功后更新
+    var sciHubProbed = false;
+
     function probeMirror(base) {
       return new Promise(function (resolve) {
         var settled = false;
@@ -213,12 +216,17 @@
           .catch(function () { if (!settled) { settled = true; clearTimeout(timer); resolve(false); } });
       });
     }
-    function openSciHub(doi, idx) {
-      if (idx >= sciHubMirrors.length) { window.open(sciHubMirrors[0] + doi, "_blank", "noopener"); return; }
-      probeMirror(sciHubMirrors[idx]).then(function (ok) {
-        if (ok) { window.open(sciHubMirrors[idx] + doi, "_blank", "noopener"); }
-        else { openSciHub(doi, idx + 1); }
-      });
+
+    function probeSciHub() {
+      if (sciHubProbed) return;
+      sciHubProbed = true;
+      (function next(idx) {
+        if (idx >= sciHubMirrors.length) return; // 全部失败则保留默认
+        probeMirror(sciHubMirrors[idx]).then(function (ok) {
+          if (ok) { sciHubBase = sciHubMirrors[idx]; }
+          else { next(idx + 1); }
+        });
+      })(0);
     }
 
     tabs.forEach(function (tab) {
@@ -227,6 +235,7 @@
         tab.classList.add("active");
         searchMode = tab.getAttribute("data-mode");
         searchInput.placeholder = placeholders[searchMode];
+        if (searchMode === "scihub") { probeSciHub(); } // 切到 Sci-Hub 时后台探测
         searchInput.focus();
       });
     });
@@ -237,8 +246,8 @@
       if (!q) { searchInput.focus(); return; }
       var url;
       if (searchMode === "scihub") {
-        // Sci-Hub：直接拼 DOI，去掉空格；自动选择可用镜像
-        openSciHub(q.replace(/\s+/g, ""), 0);
+        // 同步打开，保证不被弹窗拦截；镜像用后台探测的缓存结果
+        url = sciHubBase + q.replace(/\s+/g, "");
       } else {
         // 搜狗微信搜索：type=2 文章
         url = "https://weixin.sogou.com/weixin?type=2&query=" + encodeURIComponent(q);
