@@ -197,6 +197,30 @@
       scihub: "输入 DOI（如 10.1038/s41586-020-2649-2）"
     };
 
+    // Sci-Hub 镜像列表：按顺序探测，自动打开第一个能连上的
+    var sciHubMirrors = [
+      "https://sci-hub.ren/",
+      "https://sci-hub.ee/",
+      "https://sci-hub.wf/",
+      "https://sci-hub.se/"
+    ];
+    function probeMirror(base) {
+      return new Promise(function (resolve) {
+        var settled = false;
+        var timer = setTimeout(function () { if (!settled) { settled = true; resolve(false); } }, 4000);
+        fetch(base, { mode: "no-cors", cache: "no-store" })
+          .then(function () { if (!settled) { settled = true; clearTimeout(timer); resolve(true); } })
+          .catch(function () { if (!settled) { settled = true; clearTimeout(timer); resolve(false); } });
+      });
+    }
+    function openSciHub(doi, idx) {
+      if (idx >= sciHubMirrors.length) { window.open(sciHubMirrors[0] + doi, "_blank", "noopener"); return; }
+      probeMirror(sciHubMirrors[idx]).then(function (ok) {
+        if (ok) { window.open(sciHubMirrors[idx] + doi, "_blank", "noopener"); }
+        else { openSciHub(doi, idx + 1); }
+      });
+    }
+
     tabs.forEach(function (tab) {
       tab.addEventListener("click", function () {
         tabs.forEach(function (t) { t.classList.remove("active"); });
@@ -213,8 +237,8 @@
       if (!q) { searchInput.focus(); return; }
       var url;
       if (searchMode === "scihub") {
-        // Sci-Hub：直接拼 DOI，去掉空格
-        url = "https://sci-hub.se/" + encodeURIComponent(q.replace(/\s+/g, ""));
+        // Sci-Hub：直接拼 DOI，去掉空格；自动选择可用镜像
+        openSciHub(q.replace(/\s+/g, ""), 0);
       } else {
         // 搜狗微信搜索：type=2 文章
         url = "https://weixin.sogou.com/weixin?type=2&query=" + encodeURIComponent(q);
