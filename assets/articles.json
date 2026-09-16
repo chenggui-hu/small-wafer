@@ -5,35 +5,31 @@
     "account": "硅基火花",
     "date": "2026-09-06",
     "thumb": "assets/thumbs/thumb-1.jpg",
-    "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxPkaRVoEuLg0Uq4JkD28hQZ4YmhN1Nv2VqXa8Fplpd9PFKzfBnrR9Hle6qJeV_HCtwG_tUd-QVhLohvIjEWO5cBLBlFQNit6qcUN9R6uS0f6-T3-clKXIQw4APOz19XBUYaeVorwxuNUKR_FykRRll0Y1dEuvmTie9-h_1BFypr1kS7hwKgol6KQJFIMAMRI7_r6kvyYTkVnKYLoIBj6SENGbbB75bUeA..&amp;type=2&amp;query=%22%E7%A1%85%E5%9F%BA%E7%81%AB%E8%8A%B1%22&amp;token=2C164140EB04D6D2F7F1AD72D6FBB8E7F79BAD326AA94153",
-    "url": "https://mp.weixin.qq.com/s?src=11&timestamp=1789477203&ver=6968&signature=LGHg**9zJJSymhwdqOLMZNa9h*E69Gicunu442H5VbWdAzYhaAFa70DUFaMQrJ*ikXYoOpF8rTGBhTUQRKDWi0SO*q054kYPrCvDsOvyDrcpVS*exXNxtkD6AL*SdN1g&new=1"
-  },
-  {
-    "title": "Sidewall Spacer深度解析:90nm到28nm,ONO",
-    "digest": "芯片制程从90纳米缩到28纳米,侧墙Spacer早就不是一堵简单的绝缘墙了.它其实是控制晶体管尺寸和性能的核心模块.主要管五件...",
-    "account": "硅基火花",
-    "date": "2026-09-05",
-    "thumb": "assets/thumbs/thumb-2.jpg",
-    "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxPkaRVoEuLg0Uq4JkD28hQZ4YmhN1Nv2VqXa8Fplpd9PFKzfBnrR9Hle6qJeV_HCtwG_tUd-QVhLohvIjEWO5cBLBlFQNit6mnlv1KnB1vnt_Fa_GgjZOL7GvuSqLnd6fVWhpURAL_HOYxsjrh0Zj4JoJyAa1BGxSAJptMZYvjx8q86XQvj1-CrrMkH_zifepJrby4o0UzU88I9vJTiMHJe0WC6Sbi7DA..&amp;type=2&amp;query=%22%E7%A1%85%E5%9F%BA%E7%81%AB%E8%8A%B1%22&amp;token=2C164140EB04D6D2F7F1AD72D6FBB8E7F79BAD326AA94153",
-    "url": "https://mp.weixin.qq.com/s?src=11&timestamp=1789477203&ver=6968&signature=LGHg**9zJJSymhwdqOLMZNa9h*E69Gicunu442H5VbUsNSqCB1VhgM9rwj4CTzYSvSY0lmXGXuqm77ojwmy0SE-uslZYX*RT2HnGycJsZ3C-9BUCy0INJJ0IEJ3ma0sV&new=1"
-  },
-  {
-    "title": "半导体离子注入工艺深度解析:从原理、参数",
-    "digest": "半导体制造里,光刻定形状,离子注入定电性.纯硅不导电,得靠它把杂质“打”进硅里.现在的芯片结构,基本都靠这步做出来....",
-    "account": "硅基火花",
-    "date": "2026-09-04",
-    "thumb": "assets/thumbs/thumb-3.jpg",
-    "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxPkaRVoEuLg0Uq4JkD28hQZ4YmhN1Nv2VqXa8Fplpd9PFKzfBnrR9Hle6qJeV_HCtwG_tUd-QVhLohvIjEWO5cBLBlFQNit6rp88Iwuhnyh6Ib9XiHL7oPlRCkWR_ILQdZ73oUheMREDY0HCpxkrWf1kq5qd8Rz6YXmeR3P6ATSwttpGTaFbrrCcEzyv3H0hdRQ_VP-XvXQzLJo3MqptnwYJSSFPgfogQ..&amp;type=2&amp;query=%22%E7%A1%85%E5%9F%BA%E7%81%AB%E8%8A%B1%22&amp;token=2C164140EB04D6D2F7F1AD72D6FBB8E7F79BAD326AA94153",
-    "url": "https://mp.weixin.qq.com/s?src=11&timestamp=1789477203&ver=6968&signature=LGHg**9zJJSymhwdqOLMZNa9h*E69Gicunu442H5VbVbeHJSZICAz1w5YMEZd*EK4nsUHclZlX1FHr1K97NaLxBkgW3nKjCmR0rCepyhy50J0KsuLMVM8B3B1KRmfwA*&new=1"
+    "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%82%89%E7%AE%A1%E5%B7%A5%E8%89%BA%E4%B8%89%E9%83%A8%E6%9B%B2"
   },
   {
     "title": "CIS结构演进:从 FSI 到 BSI,再到 Stacked",
     "digest": "手机夜景能追平单反,除了算法猛,底层的传感器结构也换了三遍.最早是前照式 FSI.光得先穿过电路才能到感光区,金属线一挡,...",
     "account": "硅基火花",
     "date": "2026-09-11",
+    "thumb": "assets/thumbs/thumb-2.jpg",
+    "url": "https://weixin.sogou.com/weixin?type=2&query=CIS%E7%BB%93%E6%9E%84%E6%BC%94%E8%BF%9B%3A%E4%BB%8E%20FSI%20%E5%88%B0%20BSI%2C%E5%86%8D%E5%88%B0%20Stacked"
+  },
+  {
+    "title": "Sidewall Spacer深度解析:90nm到28nm,ONO",
+    "digest": "芯片制程从90纳米缩到28纳米,侧墙Spacer早就不是一堵简单的绝缘墙了.它其实是控制晶体管尺寸和性能的核心模块.主要管五件...",
+    "account": "硅基火花",
+    "date": "2026-09-05",
+    "thumb": "assets/thumbs/thumb-3.jpg",
+    "url": "https://weixin.sogou.com/weixin?type=2&query=Sidewall%20Spacer%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%3A90nm%E5%88%B028nm%2C"
+  },
+  {
+    "title": "半导体离子注入工艺深度解析:从原理、参数",
+    "digest": "半导体制造里,光刻定形状,离子注入定电性.纯硅不导电,得靠它把杂质“打”进硅里.现在的芯片结构,基本都靠这步做出来....",
+    "account": "硅基火花",
+    "date": "2026-09-04",
     "thumb": "assets/thumbs/thumb-4.jpg",
-    "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxPkaRVoEuLg0Uq4JkD28hQZ4YmhN1Nv2VqXa8Fplpd9PFKzfBnrR9Hle6qJeV_HCtwG_tUd-QVhLohvIjEWO5cBLBlFQNit6pFXxH_pbYuOiKqPpJNyjv8AUnP_rRGXNbKALHZ2RjaIryRDwCvw0cLr8a79l3g-o0fhMLc9MqrErGI5TO5jTev1D7mjKRsyZQR4461l7Szk2n60GcRgY9bFcvUoAZZH7Q..&amp;type=2&amp;query=%22%E7%A1%85%E5%9F%BA%E7%81%AB%E8%8A%B1%22&amp;token=2C164140EB04D6D2F7F1AD72D6FBB8E7F79BAD326AA94153",
-    "url": "https://mp.weixin.qq.com/s?src=11&timestamp=1789477203&ver=6968&signature=LGHg**9zJJSymhwdqOLMZNa9h*E69Gicunu442H5VbXq1wVTRI06U73xIVXhJeEJTuCyfv7Hv**AjwUvfJC7VELOhO4qvzydrlnywHN3z6Z7ZRdjIAYR9ORRkRK7sWGA&new=1"
+    "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%A6%BB%E5%AD%90%E6%B3%A8%E5%85%A5%E5%B7%A5%E8%89%BA%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%3A%E4%BB%8E%E5%8E%9F%E7%90%86%E3%80%81%E5%8F%82%E6%95%B0"
   },
   {
     "title": "Latch-up 闩锁效应:CMOS芯片为什么会突然形成大电流?从寄生PNPN到触发与抑制一次讲透",
@@ -41,16 +37,14 @@
     "account": "硅基火花",
     "date": "2026-09-11",
     "thumb": "assets/thumbs/thumb-5.jpg",
-    "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxPkaRVoEuLg0Uq4JkD28hQZ4YmhN1Nv2VqXa8Fplpd9PFKzfBnrR9Hle6qJeV_HCtwG_tUd-QVhLohvIjEWO5cBLBlFQNit6pe7zXfU-z_I5sMc2cfUI54HCaJCc5zctFWkEyuJBRhc2o7YT8KtfSMORjtL9VpoMYVF4yXojBvthWtUC8U5W9OR7eSeTwGurQqEB6WvZ8YhZRmhSFcpRX5j3x9Nw6p-Fg..&amp;type=2&amp;query=%22%E7%A1%85%E5%9F%BA%E7%81%AB%E8%8A%B1%22&amp;token=2C164140EB04D6D2F7F1AD72D6FBB8E7F79BAD326AA94153",
-    "url": "https://mp.weixin.qq.com/s?src=11&timestamp=1789477203&ver=6968&signature=LGHg**9zJJSymhwdqOLMZNa9h*E69Gicunu442H5VbUYu*PMkdMqmmmwnEF7i78a4wh**LmVXNwgb4KX1iqoq2Qdr4XzUYHUoXfZDMjEl80W4LpRK7vUv75-OEJ-qIQY&new=1"
+    "url": "https://weixin.sogou.com/weixin?type=2&query=Latch-up%20%E9%97%A9%E9%94%81%E6%95%88%E5%BA%94%3ACMOS%E8%8A%AF%E7%89%87%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E7%AA%81%E7%84%B6%E5%BD%A2%E6%88%90%E5%A4%A7%E7%94%B5"
   },
   {
-    "title": "Sidewall Spacer深度解析:90nm到28nm,ONO结构到底在控制什么?",
-    "digest": "导读:在90nm到28nm的Planar CMOS工艺中,Sidewall Spacer早已不是一堵简单的绝缘侧墙.它同时承担着定义LDD/Extension位置...",
+    "title": "半导体制造中的天线效应:从 Plasma Charging 到 Antenna Rule",
+    "digest": "天线效应(Antenna Effect),也叫等离子体诱导损伤(Plasma-Process Induced Damage, PID).它是一条极其特殊的失效路径:芯...",
     "account": "硅基火花",
-    "date": "2026-09-05",
+    "date": "2026-09-14",
     "thumb": "assets/thumbs/thumb-6.jpg",
-    "link": "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgSxPkaRVoEuLg0Uq4JkD28hQZ4YmhN1Nv2VqXa8Fplpd9PFKzfBnrR9Hle6qJeV_HCtwG_tUd-QVhLohvIjEWO5cBLBlFQNit6n8g5IEwvqpmoqghBoghkydMQc_mjLgc5qwDpbd-Sji6nFvuIua9bRqL69zMYEVe_-mNviYlqs3EvE1W21Up7BYCnjfGZSBHF0Q5iQ0CPjOUokdTw1UrPwthlgeRt7bSzA..&amp;type=2&amp;query=%22%E7%A1%85%E5%9F%BA%E7%81%AB%E8%8A%B1%22&amp;token=2C164140EB04D6D2F7F1AD72D6FBB8E7F79BAD326AA94153",
-    "url": "https://mp.weixin.qq.com/s?src=11&timestamp=1789477203&ver=6968&signature=LGHg**9zJJSymhwdqOLMZNa9h*E69Gicunu442H5VbXg8tkp7IZu8paxXDlZ*xolWtXHf9x5QtTFLL-8Uh9N-pZeCOCC9F8Uf*fkSfFBQBtoZA4P*AA2HIY5yGwn6vnM&new=1"
+    "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%88%B6%E9%80%A0%E4%B8%AD%E7%9A%84%E5%A4%A9%E7%BA%BF%E6%95%88%E5%BA%94%3A%E4%BB%8E%20Plasma%20Charging%20"
   }
 ]
