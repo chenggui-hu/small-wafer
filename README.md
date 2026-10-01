@@ -12,6 +12,10 @@
 small-wafer/
 ├── index.html        # 首页（含「全网热搜」板块）
 ├── articles.html     # 半导体（公众号文章合集）
+├── life.html         # Life
+├── ai.html           # AI
+├── python.html       # Python
+├── linux.html        # Linux
 ├── tools.html        # 常用软件集
 ├── webapps.html      # 常用网页集
 ├── social.html       # 关注我
@@ -32,6 +36,14 @@ small-wafer/
 ```
 
 ## 我想改内容，怎么动？
+
+### 导航结构（9 个页面共用同一份导航）
+
+顺序：**热榜 · 半导体 · Life · AI · Python · Linux · 网页 · Software · 关注 · GitHub**
+
+- 全部为平级直链，没有下拉子菜单
+- 要加一个新页面：新建 `xxx.html`，然后把这 9 个页面导航里的 `<a href="xxx.html">名字</a>` 加进去即可（放在想要的位置）
+- 导航代码在每个 html 的 `<nav class="nav-links">` 里；`js/main.js` 会自动高亮当前页
 
 ### 首页 `index.html`
 
