@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-02 00:47",
+  "updated": "2026-10-02 06:59",
   "items": [
     {
       "rank": 1,
       "title": "ClipSeek 成功上架 Microsoft Store 啦 ｜ 送码",
       "url": "https://www.v2ex.com/t/1246024",
-      "replies": 62,
+      "replies": 63,
       "node": "分享创造"
     },
     {
       "rank": 2,
       "title": "产品形态来说，好多咱们的程序员以为 APP > WEB",
       "url": "https://www.v2ex.com/t/1245970",
-      "replies": 54,
+      "replies": 58,
       "node": "程序员"
     },
     {
@@ -26,36 +26,36 @@
       "rank": 4,
       "title": "有什么有意思的 3C 产品推荐嘛",
       "url": "https://www.v2ex.com/t/1245950",
-      "replies": 34,
+      "replies": 37,
       "node": "买买买"
     },
     {
       "rank": 5,
+      "title": "主力邮箱还是得选国内邮箱",
+      "url": "https://www.v2ex.com/t/1246060",
+      "replies": 30,
+      "node": "程序员"
+    },
+    {
+      "rank": 6,
       "title": "号被封了……",
       "url": "https://www.v2ex.com/t/1245975",
       "replies": 29,
       "node": "Claude"
     },
     {
-      "rank": 6,
-      "title": "Gemini 4 出来了，吊打其他的公司啊",
-      "url": "https://www.v2ex.com/t/1245940",
-      "replies": 25,
-      "node": "分享发现"
-    },
-    {
       "rank": 7,
       "title": "最近迁移到 Catsxp 浏览器",
       "url": "https://www.v2ex.com/t/1245944",
-      "replies": 25,
+      "replies": 27,
       "node": "浏览器"
     },
     {
       "rank": 8,
-      "title": "主力邮箱还是得选国内邮箱",
-      "url": "https://www.v2ex.com/t/1246060",
-      "replies": 23,
-      "node": "程序员"
+      "title": "通过 firefox 注册 muse",
+      "url": "https://www.v2ex.com/t/1245987",
+      "replies": 22,
+      "node": "分享发现"
     },
     {
       "rank": 9,
@@ -66,10 +66,10 @@
     },
     {
       "rank": 10,
-      "title": "通过 firefox 注册 muse",
-      "url": "https://www.v2ex.com/t/1245987",
-      "replies": 21,
-      "node": "分享发现"
+      "title": "[分享送码] Forma Drive 在 Mac 上读写 NTFS 和 ext4 移动硬盘，顺带看线缆速度、清理磁盘",
+      "url": "https://www.v2ex.com/t/1245993",
+      "replies": 17,
+      "node": "Apple"
     }
   ]
 }
