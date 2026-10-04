@@ -1,67 +1,67 @@
 {
-  "updated": "2026-10-04 16:46",
+  "updated": "2026-10-04 19:48",
   "items": [
     {
       "rank": 1,
       "title": "IINA 1.5.0 发布了",
       "url": "https://www.v2ex.com/t/1246346",
-      "replies": 45,
+      "replies": 65,
       "node": "分享创造"
     },
     {
       "rank": 2,
-      "title": "历经千辛万苦终于用上了 opus5.5.",
-      "url": "https://www.v2ex.com/t/1246282",
-      "replies": 33,
-      "node": "Claude"
-    },
-    {
-      "rank": 3,
-      "title": "微信输入法安装的时候强制要管理员权限",
-      "url": "https://www.v2ex.com/t/1246278",
-      "replies": 28,
-      "node": "问与答"
-    },
-    {
-      "rank": 4,
       "title": "国庆参加表哥的婚礼，让我有点不同的人生感悟",
       "url": "https://www.v2ex.com/t/1246308",
-      "replies": 27,
+      "replies": 28,
       "node": "生活"
     },
     {
-      "rank": 5,
-      "title": "闲来无事，梳理了下自己最近的 ai 订阅",
-      "url": "https://www.v2ex.com/t/1246264",
+      "rank": 3,
+      "title": "还有人说这波 Personal AI Agent 是伪需求？",
+      "url": "https://www.v2ex.com/t/1246315",
       "replies": 23,
       "node": "程序员"
     },
     {
-      "rank": 6,
+      "rank": 4,
       "title": "公司让开发个某书刷阅读系统",
       "url": "https://www.v2ex.com/t/1246332",
-      "replies": 22,
+      "replies": 23,
+      "node": "职场话题"
+    },
+    {
+      "rank": 5,
+      "title": "claude 的 100 刀在苹果商店要加 24 刀税,如何避免?",
+      "url": "https://www.v2ex.com/t/1246350",
+      "replies": 23,
+      "node": "问与答"
+    },
+    {
+      "rank": 6,
+      "title": "下周 25 周岁，公司没了，想尝试跨考 28 考研的科软，求意见",
+      "url": "https://www.v2ex.com/t/1246360",
+      "replies": 23,
       "node": "职场话题"
     },
     {
       "rank": 7,
-      "title": "claude 的 100 刀在苹果商店要加 24 刀税,如何避免?",
-      "url": "https://www.v2ex.com/t/1246350",
-      "replies": 22,
-      "node": "问与答"
-    },
-    {
-      "rank": 8,
       "title": "macOS 上 ChatGPT 客户端长期无法使用",
       "url": "https://www.v2ex.com/t/1246331",
-      "replies": 19,
+      "replies": 21,
       "node": "OpenAI"
     },
     {
-      "rank": 9,
+      "rank": 8,
       "title": "相比 AI 的能力，觉得更可怕是它进步的速度、变化的幅度。",
       "url": "https://www.v2ex.com/t/1246322",
-      "replies": 18,
+      "replies": 19,
+      "node": "程序员"
+    },
+    {
+      "rank": 9,
+      "title": "建个站，要怎样的提示词或方法， gpt 可以自己做呢？",
+      "url": "https://www.v2ex.com/t/1246338",
+      "replies": 17,
       "node": "程序员"
     }
   ]
