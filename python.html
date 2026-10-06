@@ -5,7 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python | 硅基火花 · small-wafer</title>
   <meta name="description" content="工作中用到的 Python 脚本与自动化实践。" />
-  <link rel="stylesheet" href="css/style.css?v=20261001b" />
+  <link rel="stylesheet" href="css/style.css?v=20261006a" />
+  <style>
+    /* Python 速查页专用样式（仅本页生效） */
+    .doc-toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 26px; }
+    .doc-toc a {
+      padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px;
+      font-size: 0.86rem; color: var(--ink-soft); background: var(--bg); transition: all .2s;
+    }
+    .doc-toc a:hover { border-color: var(--brand); color: var(--brand); }
+
+    .doc-section {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 26px 30px; margin-bottom: 22px;
+    }
+    .doc-section > h3 {
+      margin: 0 0 10px; font-size: 1.15rem; color: var(--brand-dark);
+      border-left: 4px solid var(--brand); padding-left: 12px;
+    }
+    .doc-intro { margin: 0 0 18px; color: var(--ink-soft); font-size: 0.94rem; }
+    .doc-section h4 { margin: 22px 0 10px; font-size: 1rem; color: var(--ink); }
+
+    .cmd-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .cmd-table th, .cmd-table td {
+      border-bottom: 1px solid var(--line); padding: 10px 12px;
+      text-align: left; vertical-align: top;
+    }
+    .cmd-table th { background: #eef2f7; color: var(--brand-dark); font-weight: 700; white-space: nowrap; }
+    .cmd-table tbody tr:hover td { background: #f8fafc; }
+    .cmd-table td:first-child { white-space: nowrap; }
+    .cmd-table .desc { color: var(--ink-soft); }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      background: #eef2f7; color: #b91c1c; padding: 2px 6px; border-radius: 6px; font-size: 0.86em;
+    }
+    pre {
+      background: #0f172a; color: #e2e8f0; padding: 16px 18px; border-radius: 12px;
+      overflow-x: auto; font-size: 0.85rem; line-height: 1.7; margin: 0 0 16px;
+    }
+    pre code { background: transparent; color: inherit; padding: 0; font-size: 1em; }
+
+    .doc-tip {
+      background: #e6f7f6; color: var(--brand-dark); border-radius: 10px;
+      padding: 12px 16px; font-size: 0.9rem; margin: 0 0 18px;
+    }
+    ul.doc-list { margin: 0 0 16px; padding-left: 20px; color: var(--ink-soft); font-size: 0.93rem; }
+    ul.doc-list li { margin: 6px 0; }
+    ul.doc-list code { font-size: 0.85em; }
+
+    @media (max-width: 640px) {
+      .doc-section { padding: 20px 18px; }
+      .cmd-table { font-size: 0.84rem; }
+      .cmd-table th, .cmd-table td { padding: 8px 8px; }
+    }
+  </style>
 </head>
 <body>
   <!-- 背景音乐 -->
@@ -36,7 +91,7 @@
           <a href="ai.html">AI</a>
           <a href="python.html">Python</a>
           <a href="linux.html">Linux</a>
-          <a href="webapps.html">网页</a>
+          <a href="webapps.html">常用网页</a>
           <a href="tools.html">Software</a>
           <a href="social.html">关注</a>
           <a class="nav-cta" href="https://github.com/chenggui-hu" target="_blank" rel="noopener">GitHub</a>
@@ -62,10 +117,275 @@
   <section class="section section-alt" id="python">
     <div class="section-head">
       <span class="section-kicker">PYTHON</span>
-      <h2>Python</h2>
+      <h2>Python 速查笔记</h2>
     </div>
-    <p class="section-lead">工作中用到的 Python 脚本与自动化实践。</p>
-    <p class="about-note">📝 内容整理中，后续补充。</p>
+    <p class="section-lead">基础语法、函数、办公自动化与爬虫常用库，一页速查。</p>
+
+    <nav class="doc-toc" aria-label="页内导航">
+      <a href="#py-basic">① 基础语法</a>
+      <a href="#py-func">② 函数</a>
+      <a href="#py-office">③ 办公自动化</a>
+      <a href="#py-spider">④ 爬虫常用库</a>
+    </nav>
+
+    <!-- 1. 基础语法 -->
+    <div class="doc-section" id="py-basic">
+      <h3>一、基础语法</h3>
+      <p class="doc-intro">Python 是动态类型语言：变量不用声明类型，赋什么就是什么。核心内置类型就 6 个，吃透它们就够日常用了。</p>
+
+      <h4>数据类型和变量</h4>
+      <table class="cmd-table">
+        <thead>
+          <tr><th>类型</th><th>写法示例</th><th>要点</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>整数 <code>int</code></td><td><code>n = 10</code> · <code>a = 0b1010</code> 二进制</td><td class="desc">无位数限制，天然支持大整数</td></tr>
+          <tr><td>浮点数 <code>float</code></td><td><code>x = 3.14</code> · <code>1.23e9</code></td><td class="desc">有精度误差，比较用 <code>abs(a-b) &lt; 1e-9</code></td></tr>
+          <tr><td>字符串 <code>str</code></td><td><code>s = "hello"</code></td><td class="desc">不可变，支持切片 <code>s[1:3]</code></td></tr>
+          <tr><td>布尔 <code>bool</code></td><td><code>True</code> / <code>False</code></td><td class="desc">布尔运算 <code>and</code> / <code>or</code> / <code>not</code></td></tr>
+          <tr><td>空值 <code>None</code></td><td><code>r = None</code></td><td class="desc">不是 0 也不是空串，表示「没有值」</td></tr>
+          <tr><td>除法</td><td><code>10 / 3</code> · <code>10 // 3</code> · <code>10 % 3</code></td><td class="desc"><code>/</code> 得浮点，<code>//</code> 地板除，<code>%</code> 取余</td></tr>
+        </tbody>
+      </table>
+
+      <h4>字符串与编码</h4>
+      <pre><code>s = "中文abc"
+len(s)              # 5：按字符数，不是字节数
+s.encode('utf-8')   # str -> bytes，中文占 3 字节
+b.decode('utf-8')   # bytes -> str
+ord('A')            # 65：字符 -> 码位
+chr(66)             # 'B'：码位 -> 字符
+f"我叫{name}，今年{age}岁"   # f-string 格式化，首选
+"{:.2f}".format(3.14159)     # '3.14'，保留两位小数</code></pre>
+      <div class="doc-tip">
+        <strong>记一条：</strong><code>str</code> 是字符序列、<code>bytes</code> 是字节序列。网络和文件读进来的都是 <code>bytes</code>，先 <code>decode</code> 再处理；写出去前 <code>encode</code>。统一用 UTF-8 基本不会乱码。
+      </div>
+
+      <h4>list 和 tuple</h4>
+      <pre><code>langs = ['python', 'java', 'c++']
+langs.append('go')      # 尾部追加
+langs.insert(1, 'rust') # 指定位置插入
+langs.pop()             # 删除末尾元素
+langs[0]                # 'python'，索引从 0 开始
+langs[-1]               # 最后一个
+langs[1:3]              # 切片，取索引 1、2
+
+point = (3, 5)          # tuple 不可变，一旦定义不能改
+x, y = point            # 解包赋值</code></pre>
+
+      <h4>条件判断</h4>
+      <pre><code>age = 20
+if age >= 18:
+    print('adult')
+elif age >= 6:
+    print('teenager')
+else:
+    print('kid')
+
+# 只要 x 是非零数值、非空字符串、非空 list/dict，就为 True
+if nums:            # 等价于 if len(nums) > 0
+    process(nums)</code></pre>
+
+      <h4>循环</h4>
+      <pre><code>for name in ['A', 'B', 'C']:    # for-in 遍历
+    print(name)
+for i in range(5):              # 0 1 2 3 4
+    print(i)
+for i, v in enumerate(lst):     # 同时要下标和值
+    print(i, v)
+
+n = 100
+while n > 0:                    # while 循环
+    n = n // 2
+    if n == 10:
+        break                   # 提前退出；continue 跳过本轮</code></pre>
+
+      <h4>dict 和 set</h4>
+      <pre><code>d = {'Michael': 95, 'Bob': 75}
+d['Tracy'] = 85            # 新增 / 覆盖
+d.get('Tom', -1)           # key 不存在返回 -1，不报错
+d.pop('Bob')               # 删除
+for k, v in d.items():     # 遍历键值
+    print(k, v)
+
+s = {1, 2, 3}              # set：key 集合，自动去重
+s.add(4); s.remove(1)
+s1 & s2                    # 交集；s1 | s2 并集</code></pre>
+    </div>
+
+    <!-- 2. 函数 -->
+    <div class="doc-section" id="py-func">
+      <h3>二、函数</h3>
+      <p class="doc-intro">函数是复利最高的抽象：一段逻辑封装好，到处调用。参数规则是面试和排错的高频点。</p>
+
+      <h4>调用函数</h4>
+      <pre><code>abs(-100)          # 100
+max(1, 2, 3)       # 3
+int('12')          # 12，类型转换也是函数
+isinstance('a', str)   # True，类型检查
+# 不知道有什么内置函数：help(abs) 看 help</code></pre>
+
+      <h4>定义函数</h4>
+      <pre><code>def my_abs(x):
+    if not isinstance(x, (int, float)):
+        raise TypeError('bad operand type')
+    if x >= 0:
+        return x
+    return -x
+
+def nop():          # 空函数先占位
+    pass</code></pre>
+
+      <h4>函数的参数</h4>
+      <table class="cmd-table">
+        <thead>
+          <tr><th>参数类型</th><th>写法</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>位置参数</td><td><code>def f(x, y)</code></td><td class="desc">按顺序传入，数量位置都要对</td></tr>
+          <tr><td>默认参数</td><td><code>def f(x, n=2)</code></td><td class="desc">必选在前；默认值必须是不可变对象</td></tr>
+          <tr><td>可变参数</td><td><code>def f(*nums)</code></td><td class="desc">收进 tuple，调用可传任意个</td></tr>
+          <tr><td>关键字参数</td><td><code>def f(**kw)</code></td><td class="desc">收进 dict，扩展函数能力而不破坏接口</td></tr>
+        </tbody>
+      </table>
+      <pre><code>def enroll(name, gender, age=6, city='Beijing'):
+    print(name, gender, age, city)
+
+enroll('Sarah', 'F')              # 默认参数生效
+enroll('Bob', 'M', age=8)         # 覆盖默认值
+
+def calc(*numbers):
+    total = 0
+    for n in numbers:
+        total += n
+    return total
+
+calc(1, 2, 3)          # 6
+nums = [1, 2, 3]
+calc(*nums)            # 已有 list 加 * 即可传入</code></pre>
+
+      <h4>递归函数</h4>
+      <pre><code>def fact(n):
+    if n == 1:
+        return 1
+    return n * fact(n - 1)
+
+fact(5)        # 120。注意：层数过深会栈溢出（默认约 1000 层）</code></pre>
+      <div class="doc-tip">
+        <strong>坑位提醒：</strong>默认参数千万别用可变对象——<code>def f(lst=[])</code> 的 <code>lst</code> 会在多次调用间共享，改成 <code>lst=None</code> 再在函数体内新建。
+      </div>
+    </div>
+
+    <!-- 3. 办公自动化 -->
+    <div class="doc-section" id="py-office">
+      <h3>三、办公自动化常用库</h3>
+      <p class="doc-intro">批量处理 Excel / Word / PDF / 文件，是 Python 在办公室最实在的用法。全部 <code>pip install</code> 即得。</p>
+      <table class="cmd-table">
+        <thead>
+          <tr><th>库</th><th>用途</th><th>典型代码</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>openpyxl</code></td>
+            <td class="desc">读写 .xlsx，批量填表、汇总多工作簿</td>
+            <td><code>wb = load_workbook('a.xlsx')</code> · <code>ws['A1'] = 1</code></td>
+          </tr>
+          <tr>
+            <td><code>pandas</code></td>
+            <td class="desc">表格数据一站式处理：清洗、统计、透视、导出</td>
+            <td><code>pd.read_excel('a.xlsx')</code> · <code>df.groupby('部门').sum()</code></td>
+          </tr>
+          <tr>
+            <td><code>python-docx</code></td>
+            <td class="desc">批量生成 / 修改 Word 文档</td>
+            <td><code>d = Document(); d.add_heading('周报', 1)</code></td>
+          </tr>
+          <tr>
+            <td><code>pypdf</code></td>
+            <td class="desc">PDF 合并、拆分、提取文本页</td>
+            <td><code>merger.append('a.pdf')</code> · <code>merger.write('out.pdf')</code></td>
+          </tr>
+          <tr>
+            <td><code>pathlib</code> / <code>shutil</code></td>
+            <td class="desc">批量重命名、分类归档、复制移动（内置无需安装）</td>
+            <td><code>Path('d:/logs').glob('*.log')</code> · <code>shutil.copy(src, dst)</code></td>
+          </tr>
+          <tr>
+            <td><code>smtplib</code> + <code>email</code></td>
+            <td class="desc">定时自动发邮件（内置无需安装）</td>
+            <td><code>with smtplib.SMTP_SSL('smtp.qq.com') as s:</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <pre><code># 实战样例：汇总当前目录所有 Excel 的第一个 sheet
+import pandas as pd
+from pathlib import Path
+
+rows = []
+for f in Path('.').glob('*.xlsx'):
+    rows.append(pd.read_excel(f))
+pd.concat(rows).to_excel('汇总.xlsx', index=False)</code></pre>
+    </div>
+
+    <!-- 4. 爬虫常用库 -->
+    <div class="doc-section" id="py-spider">
+      <h3>四、爬虫常用库</h3>
+      <p class="doc-intro">爬虫三步走：请求（requests）→ 解析（bs4 / re / lxml）→ 存储（csv / pandas）。动静分离：静态页 requests 就够，动态渲染上浏览器自动化。</p>
+      <table class="cmd-table">
+        <thead>
+          <tr><th>库</th><th>定位</th><th>典型代码</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>requests</code></td>
+            <td class="desc">HTTP 请求事实标准，简单直接</td>
+            <td><code>r = requests.get(url, headers=hd)</code> · <code>r.text</code></td>
+          </tr>
+          <tr>
+            <td><code>beautifulsoup4</code></td>
+            <td class="desc">HTML 解析，按标签 / class 抽数据</td>
+            <td><code>soup.select('div.title a')</code> · <code>t.get_text()</code></td>
+          </tr>
+          <tr>
+            <td><code>lxml</code></td>
+            <td class="desc">高速解析器，配合 bs4 或 XPath 使用</td>
+            <td><code>BeautifulSoup(html, 'lxml')</code></td>
+          </tr>
+          <tr>
+            <td><code>re</code></td>
+            <td class="desc">正则提取，处理非结构化文本</td>
+            <td><code>re.findall(r'\d{4}-\d{2}-\d{2}', text)</code></td>
+          </tr>
+          <tr>
+            <td><code>pandas</code></td>
+            <td class="desc">表格抓取一步到位，存 Excel / CSV</td>
+            <td><code>pd.read_html(url)</code> · <code>df.to_csv('out.csv')</code></td>
+          </tr>
+          <tr>
+            <td><code>selenium</code> / <code>playwright</code></td>
+            <td class="desc">JS 渲染页面、需要登录 / 滚动加载时上真浏览器</td>
+            <td><code>driver.get(url)</code> · <code>driver.find_element('id', 'kw')</code></td>
+          </tr>
+          <tr>
+            <td><code>scrapy</code></td>
+            <td class="desc">大型爬虫框架：调度、并发、管道一条龙</td>
+            <td><code>scrapy startproject demo</code> · <code>scrapy crawl spider1</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <pre><code># 最小可用爬虫：抓标题并存 CSV
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+hd = {'User-Agent': 'Mozilla/5.0'}
+soup = BeautifulSoup(requests.get(url, headers=hd).text, 'lxml')
+titles = [t.get_text() for t in soup.select('h2 a')]
+pd.DataFrame({'标题': titles}).to_csv('titles.csv', index=False)</code></pre>
+      <div class="doc-tip">
+        <strong>合规红线：</strong>先看目标站 <code>robots.txt</code> 与服务条款；控制请求频率（加 <code>time.sleep</code>），不爬个人隐私与版权数据。技术无罪，用法有界。
+      </div>
+    </div>
   </section>
 
   <!-- 页脚 -->
@@ -74,6 +394,6 @@
     <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
   </footer>
 
-  <script src="js/main.js?v=20261001b"></script>
+  <script src="js/main.js?v=20261006a"></script>
 </body>
 </html>

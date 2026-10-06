@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linux | 硅基火花 · small-wafer</title>
   <meta name="description" content="常用的 Linux 命令、Vim 编辑、Shell 语法与 Crontab 定时速查。" />
-  <link rel="stylesheet" href="css/style.css?v=20261001b" />
+  <link rel="stylesheet" href="css/style.css?v=20261006a" />
   <style>
     /* Linux 速查页专用样式（仅本页生效） */
     .doc-toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 26px; }
@@ -91,7 +91,7 @@
           <a href="ai.html">AI</a>
           <a href="python.html">Python</a>
           <a href="linux.html" class="active">Linux</a>
-          <a href="webapps.html">网页</a>
+          <a href="webapps.html">常用网页</a>
           <a href="tools.html">Software</a>
           <a href="social.html">关注</a>
           <a class="nav-cta" href="https://github.com/chenggui-hu" target="_blank" rel="noopener">GitHub</a>
@@ -136,35 +136,38 @@
       <p class="doc-intro">Linux 只是内核，日常说的「装个 Linux」其实是在选发行版。主流发行版大体分成两大流派：<strong>Debian 系</strong>（用 <code>apt</code> / <code>.deb</code>）和 <strong>Red Hat 系</strong>（用 <code>rpm</code> / <code>yum</code> / <code>dnf</code>）。看包管理器基本就能判断属于哪一支。</p>
       <table class="cmd-table">
         <thead>
-          <tr><th>发行版</th><th>所属流派</th><th>包管理</th><th>特点与适用场景</th></tr>
+          <tr><th>发行版</th><th>所属流派</th><th>包管理</th><th>最新版本 / 发布时间</th></tr>
         </thead>
         <tbody>
           <tr>
             <td>Ubuntu</td>
             <td class="desc">Debian 系</td>
             <td><code>apt</code> / <code>dpkg</code></td>
-            <td class="desc">基于 Debian，社区最大、文档最全、更新快，桌面与云服务器都最常见，新手首选。LTS 版每 2 年发布、支持 5 年。</td>
+            <td class="desc">26.04 LTS（2026-04 发布，标准支持 5 年 + Pro 扩展至 10 年）</td>
           </tr>
           <tr>
             <td>Debian</td>
             <td class="desc">Debian 系</td>
             <td><code>apt</code> / <code>dpkg</code></td>
-            <td class="desc">纯社区维护，稳定保守，是 Ubuntu 的上游。软件版本偏旧但极其可靠，追求稳定的服务器常用。</td>
+            <td class="desc">13「Trixie」（2025-08 发布，约每 2 年一个大版本）</td>
           </tr>
           <tr>
             <td>Red Hat（RHEL）</td>
             <td class="desc">Red Hat 系</td>
             <td><code>dnf</code> / <code>yum</code> / <code>rpm</code></td>
-            <td class="desc">商业企业级发行版，需订阅付费，提供长期支持与官方服务，金融、政企等生产环境常用。</td>
+            <td class="desc">10.2（2026-05 发布，每 6 个月一个小版本）</td>
           </tr>
           <tr>
             <td>CentOS</td>
             <td class="desc">Red Hat 系</td>
             <td><code>dnf</code> / <code>yum</code> / <code>rpm</code></td>
-            <td class="desc">RHEL 的社区复刻，曾是免费替代品。CentOS 8 之后转向 CentOS Stream（滚动预发布），生产环境多迁往 Rocky / AlmaLinux。</td>
+            <td class="desc">Stream 10（滚动更新，RHEL 10 的上游预发布；生产环境多迁往 Rocky / AlmaLinux 10.2）</td>
           </tr>
         </tbody>
       </table>
+      <div class="doc-tip">
+        <strong>版本数据截至 2026-10。</strong>查最新版本：<code>cat /etc/os-release</code>；Ubuntu 版本号「年.月」规则，LTS 每 2 年 4 月发布一次。
+      </div>
 
       <h4>同一个操作，两个流派怎么写</h4>
       <table class="cmd-table">
@@ -260,6 +263,16 @@
             <td><code>chmod</code></td>
             <td class="desc">修改文件 / 目录的读写执行权限。</td>
             <td><code>chmod 755 run.sh</code> · <code>chmod u+x a.sh</code> · <code>chmod -R 644 ./conf</code></td>
+          </tr>
+          <tr>
+            <td><code>top</code></td>
+            <td class="desc"><strong>实时进程监控</strong>：CPU、内存占用、负载、各进程资源消耗，排障第一入口。按 <code>q</code> 退出。</td>
+            <td><code>top</code> · <code>top -u tom</code> 只看某用户 · <code>P</code> 按 CPU 排序 · <code>M</code> 按内存排序 · 交互内 <code>k</code> 杀进程</td>
+          </tr>
+          <tr>
+            <td><code>ifconfig</code></td>
+            <td class="desc">查看 / 配置网卡（IP、掩码、MAC）。等价于 Windows 的 <code>ipconfig</code>；新系统推荐用 <code>ip</code> 命令族。</td>
+            <td><code>ifconfig</code> · <code>ifconfig eth0</code> 指定网卡 · <code>ip addr</code> 现代写法 · <code>ip a show eth0</code></td>
           </tr>
         </tbody>
       </table>
@@ -481,6 +494,6 @@ crontab -r   # 删除全部任务（慎用）</code></pre>
     <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
   </footer>
 
-  <script src="js/main.js?v=20261001b"></script>
+  <script src="js/main.js?v=20261006a"></script>
 </body>
 </html>

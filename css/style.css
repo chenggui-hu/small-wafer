@@ -393,15 +393,24 @@ a { color: inherit; text-decoration: none; }
 .article-link { color: var(--brand-2); font-weight: 600; font-size: 0.92rem; }
 
 /* ---------- 常用网页集 ---------- */
-.webapps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.webapps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .webapp-group { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
 .webapp-group h3 { margin: 0 0 14px; font-size: 1.05rem; }
-.webapp-group a {
-  display: block; padding: 9px 0; color: var(--ink-soft);
-  border-bottom: 1px dashed var(--line); transition: color .2s, padding-left .2s;
+.webapp-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.webapp-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface); color: var(--ink-soft); font-size: 0.9rem;
+  transition: color .2s, border-color .2s, transform .2s, box-shadow .2s;
 }
-.webapp-group a:last-child { border-bottom: none; }
-.webapp-group a:hover { color: var(--brand); padding-left: 6px; }
+.webapp-chip img.webapp-icon {
+  width: 18px; height: 18px; border-radius: 4px; object-fit: contain; flex: none;
+  background: #fff;
+}
+.webapp-chip:hover {
+  color: var(--brand); border-color: var(--brand);
+  transform: translateY(-2px); box-shadow: var(--shadow);
+}
 
 /* ---------- 常用软件集（分类卡片） ---------- */
 .tool-categories { display: flex; flex-direction: column; gap: 20px; }
