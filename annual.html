@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>年度音乐/电影 | 硅基火花 · small-wafer</title>
+  <meta name="description" content="我的年度歌单、年度视频与年度爆火短剧盘点。" />
+  <link rel="stylesheet" href="css/style.css?v=20261007a" />
+  <style>
+    /* 年度音乐/电影页专用样式（仅本页生效） */
+    .doc-toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 26px; }
+    .doc-toc a {
+      padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px;
+      font-size: 0.86rem; color: var(--ink-soft); background: var(--bg); transition: all .2s;
+    }
+    .doc-toc a:hover { border-color: var(--brand); color: var(--brand); }
+
+    .doc-section {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 26px 30px; margin-bottom: 22px;
+    }
+    .doc-section > h3 {
+      margin: 0 0 10px; font-size: 1.15rem; color: var(--brand-dark);
+      border-left: 4px solid var(--brand); padding-left: 12px;
+    }
+    .doc-intro { margin: 0 0 18px; color: var(--ink-soft); font-size: 0.94rem; }
+
+    /* 歌单 */
+    .song-list { display: flex; flex-direction: column; gap: 6px; }
+    .song-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--bg); cursor: pointer; user-select: none;
+      transition: border-color .2s, transform .15s, box-shadow .2s;
+    }
+    .song-row:hover { border-color: var(--brand); transform: translateX(4px); }
+    .song-row.playing { border-color: var(--brand); background: #e6f7f6; }
+    .song-idx { width: 26px; text-align: center; color: var(--ink-soft); font-size: 0.85rem; flex: none; }
+    .song-info { flex: 1; min-width: 0; }
+    .song-name { font-weight: 600; color: var(--ink); font-size: 0.95rem; }
+    .song-artist { color: var(--ink-soft); font-size: 0.84rem; margin-top: 2px; }
+    .song-ctrl { flex: none; color: var(--brand); font-size: 1.05rem; }
+    .song-player { padding: 4px 10px 8px; animation: fadein .25s ease; }
+    .song-player iframe { border-radius: 10px; }
+    @keyframes fadein { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+    /* 视频海报卡 */
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .video-card {
+      background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s;
+    }
+    .video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .video-poster { aspect-ratio: 3 / 4; overflow: hidden; background: #0f172a; }
+    .video-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .video-title { margin: 0; font-size: 1.02rem; color: var(--ink); }
+    .video-meta { color: var(--ink-soft); font-size: 0.82rem; }
+    .video-quote {
+      font-size: 0.9rem; color: var(--brand-dark); background: #e6f7f6;
+      border-left: 3px solid var(--brand); padding: 8px 12px; border-radius: 0 8px 8px 0;
+      font-style: italic;
+    }
+    .video-comment { color: var(--ink-soft); font-size: 0.87rem; line-height: 1.7; margin: 0; }
+
+    /* 短剧榜 */
+    .drama-list { counter-reset: drama; display: flex; flex-direction: column; gap: 8px; }
+    .drama-item {
+      display: flex; gap: 14px; align-items: baseline;
+      padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg);
+    }
+    .drama-item::before {
+      counter-increment: drama; content: counter(drama, decimal-leading-zero);
+      font-weight: 800; color: var(--brand); flex: none; font-size: 0.95rem;
+    }
+    .drama-name { font-weight: 700; color: var(--ink); white-space: nowrap; }
+    .drama-desc { color: var(--ink-soft); font-size: 0.88rem; }
+
+    .doc-tip {
+      background: #e6f7f6; color: var(--brand-dark); border-radius: 10px;
+      padding: 12px 16px; font-size: 0.9rem; margin: 18px 0 0;
+    }
+
+    @media (max-width: 640px) {
+      .doc-section { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 背景音乐 -->
+  <audio id="bgm" preload="auto"></audio>
+
+  <!-- 顶部导航 -->
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a class="brand" href="index.html" title="回到首页">
+          <img class="brand-avatar" src="assets/avatar.jpg" alt="small wafer 头像" />
+          <span>small-wafer</span>
+        </a>
+        <div class="nav-music">
+          <button class="nav-music-toggle" id="navMusicToggle" aria-label="播放/暂停">▶</button>
+          <div class="nav-music-menu" id="navMusicMenu">
+            <button class="nav-music-track active" data-src="assets/bgm.mp3">曲 1</button>
+            <button class="nav-music-track" data-src="assets/bgm-2.mp3">曲 2</button>
+            <button class="nav-music-track" data-src="assets/bgm-3.mp3">曲 3</button>
+          </div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="index.html#hot">热榜</a>
+          <a href="articles.html">半导体</a>
+          <a href="life.html">Life</a>
+          <a href="ai.html">AI</a>
+          <a href="python.html">Python</a>
+          <a href="linux.html">Linux</a>
+          <a href="webapps.html">常用网页</a>
+          <div class="nav-drop">
+            <button class="nav-drop-btn" type="button">Software <span class="caret">▾</span></button>
+            <div class="nav-drop-menu">
+              <a href="tools.html">🖥 软件集</a>
+              <a href="annual.html">🎵 年度音乐/电影</a>
+            </div>
+          </div>
+        </nav>
+        <div class="nav-countdown" id="navCountdown">
+          <span class="countdown-date">--/--</span>
+          <span class="countdown-days">--</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section class="hero hero-small">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <h1 class="hero-title">年度音乐/电影</h1>
+      <p class="hero-motto">单曲循环与深夜片单，都是生活的注脚。</p>
+    </div>
+  </section>
+
+  <!-- 内容区 -->
+  <section class="section section-alt" id="annual">
+    <div class="section-head">
+      <span class="section-kicker">ANNUAL PICKS</span>
+      <h2>我的年度盘点</h2>
+    </div>
+    <p class="section-lead">年度歌单、年度视频与年度短剧，一页收藏。</p>
+
+    <nav class="doc-toc" aria-label="页内导航">
+      <a href="#music">🎵 年度音乐</a>
+      <a href="#video">🎬 年度视频</a>
+      <a href="#drama">📺 年度短剧 Top10</a>
+    </nav>
+
+    <!-- 1. 年度音乐 -->
+    <div class="doc-section" id="music">
+      <h3>年度音乐</h3>
+      <p class="doc-intro">循环最多的 11 首。<strong>点击任意一首即可播放</strong>，播放器来自网易云音乐。</p>
+      <div class="song-list" id="songList">
+        <div class="song-row" data-id="1430553802">
+          <span class="song-idx">01</span>
+          <span class="song-info"><span class="song-name">方的言</span><br /><span class="song-artist">赵英俊</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="2108827960">
+          <span class="song-idx">02</span>
+          <span class="song-info"><span class="song-name">送你一朵小红花</span><br /><span class="song-artist">赵英俊 词曲 · 声生不息 Live</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="469073823">
+          <span class="song-idx">03</span>
+          <span class="song-info"><span class="song-name">泸沽湖</span><br /><span class="song-artist">麻园诗人</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="2161934816">
+          <span class="song-idx">04</span>
+          <span class="song-info"><span class="song-name">向阳而生</span><br /><span class="song-artist">华晨宇</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="1483247098">
+          <span class="song-idx">05</span>
+          <span class="song-info"><span class="song-name">Wonder</span><br /><span class="song-artist">Shawn Mendes</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="3392129704">
+          <span class="song-idx">06</span>
+          <span class="song-info"><span class="song-name">DNA (More Than A Game)</span><br /><span class="song-artist">2026 世界杯官方主题曲</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="2607314569">
+          <span class="song-idx">07</span>
+          <span class="song-info"><span class="song-name">我想当风</span><br /><span class="song-artist">鹿先森乐队</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="2689125775">
+          <span class="song-idx">08</span>
+          <span class="song-info"><span class="song-name">再见深海</span><br /><span class="song-artist">唐汉霄</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="2015615001">
+          <span class="song-idx">09</span>
+          <span class="song-info"><span class="song-name">我们的答案</span><br /><span class="song-artist">王赫野 / 刘至佳</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="1492049185">
+          <span class="song-idx">10</span>
+          <span class="song-info"><span class="song-name">经济舱</span><br /><span class="song-artist">KEY.L刘聪 / KAFE.HU</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+        <div class="song-row" data-id="3444491054">
+          <span class="song-idx">11</span>
+          <span class="song-info"><span class="song-name">璀璨冒险人</span><br /><span class="song-artist">周深</span></span>
+          <span class="song-ctrl">▶</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 年度视频 -->
+    <div class="doc-section" id="video">
+      <h3>年度视频</h3>
+      <p class="doc-intro"><strong>时间都留给小宝宝。</strong>哄睡之后的碎片时间，就靠这三部续命。</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-poster"><img src="assets/posters/xiani.jpg" alt="仙逆 海报" loading="lazy" /></div>
+          <div class="video-body">
+            <h4 class="video-title">仙逆</h4>
+            <span class="video-meta">2023 起年番连载 · 修仙动画 · 腾讯视频</span>
+            <p class="video-quote">「顺为凡，逆则仙，只在心中一念间。」</p>
+            <p class="video-comment">修仙题材国漫的天花板。王林的杀伐果断一改主角圣母套路，年番稳定输出，2026 剧场版《弑仙之战》再冲一波热度。</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-poster"><img src="assets/posters/lifewonders.jpg" alt="生命奇观2 海报" loading="lazy" /></div>
+          <div class="video-body">
+            <h4 class="video-title">生命奇观 2</h4>
+            <span class="video-meta">2026-09 · B站 × 中国国家地理 · 纪录片</span>
+            <p class="video-quote">「每一片逆行的鳍，都是对古河床的思念。」</p>
+            <p class="video-comment">无穷小亮张辰亮全程出镜，内蒙古高原、黄渤海湿地、川西山地走了个遍。主题是「把逆境活成顺境」，科普硬核、解说又好笑，哄娃间隙看一集刚刚好。</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-poster"><img src="assets/posters/severance.jpg" alt="人生切割术 海报" loading="lazy" /></div>
+          <div class="video-body">
+            <h4 class="video-title">人生切割术 第二季</h4>
+            <span class="video-meta">2025 · Apple TV+ · 科幻悬疑</span>
+            <p class="video-quote">"The work is mysterious and important.（工作神秘而重要）"</p>
+            <p class="video-comment">打工人寓言的终极形态——上班的你和下班的你互不相识。第二季把卢蒙公司的谜团越挖越深，悬疑感与美术依旧顶级。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 年度短剧 -->
+    <div class="doc-section" id="drama">
+      <h3>年度爆火短剧 Top10</h3>
+      <p class="doc-intro">综合红果短剧热度、全网播放量与话题数据（2026-09），碎片时间电子榨菜，按热度排序。</p>
+      <div class="drama-list">
+        <div class="drama-item"><span class="drama-name">好雨知时节</span><span class="drama-desc">大理相遇互相治愈，电影氛围感，全网播放破 30 亿，口碑热度双冠。</span></div>
+        <div class="drama-item"><span class="drama-name">爱在久别重逢时</span><span class="drama-desc">全职太太遭遇背叛后涅槃重生，现实向拉扯，播放破 20 亿。</span></div>
+        <div class="drama-item"><span class="drama-name">将门六姝</span><span class="drama-desc">古装女性群像，六姐妹抱团翻盘不内耗，上线十天播放破 10 亿。</span></div>
+        <div class="drama-item"><span class="drama-name">京婚浓瘾 2</span><span class="drama-desc">原班人马回归，深挖隐婚夫妻隐忍多年的暗恋心事。</span></div>
+        <div class="drama-item"><span class="drama-name">婚后恋爱禁止条例</span><span class="drama-desc">读心术 × 契约婚姻，甜宠轻松解压，CP 好嗑。</span></div>
+        <div class="drama-item"><span class="drama-name">他生理性喜欢</span><span class="drama-desc">科研大佬的本能偏爱，拒绝工业糖精的双向治愈。</span></div>
+        <div class="drama-item"><span class="drama-name">东北话事人</span><span class="drama-desc">1997 东北下岗潮背景，退伍小人物闯荡谋生，评分高达 9.4。</span></div>
+        <div class="drama-item"><span class="drama-name">岁岁年年</span><span class="drama-desc">前世今生宿命虐恋，古今穿插叙事，赚足眼泪。</span></div>
+        <div class="drama-item"><span class="drama-name">旷野萤花</span><span class="drama-desc">孤独男女双向救赎，暗恋氛围感拉满。</span></div>
+        <div class="drama-item"><span class="drama-name">二嫁有喜</span><span class="drama-desc">古装先婚后爱，权谋爽剧，男女主势均力敌。</span></div>
+      </div>
+      <div class="doc-tip">
+        榜单为综合热度盘点，各平台上线与付费状态可能变化；短剧更新快，看到即是缘分。
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>© 2026 硅基火花 · <span class="brand-chip">◍</span> small-wafer</p>
+    <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
+  </footer>
+
+  <script src="js/main.js?v=20261007a"></script>
+  <script>
+    // 点击歌单行：懒加载网易云外链播放器，同一时间只保留一个
+    (function () {
+      document.querySelectorAll('.song-row').forEach(function (row) {
+        row.addEventListener('click', function () {
+          var open = row.classList.contains('playing');
+          document.querySelectorAll('.song-player').forEach(function (p) { p.remove(); });
+          document.querySelectorAll('.song-row.playing').forEach(function (r) { r.classList.remove('playing'); });
+          if (open) return; // 再次点击 = 关闭
+          var div = document.createElement('div');
+          div.className = 'song-player';
+          div.innerHTML = '<iframe src="https://music.163.com/outchain/player?type=2&id=' +
+            row.dataset.id + '&auto=1&height=66" frameborder="no" border="0" marginwidth="0" ' +
+            'marginheight="0" width="100%" height="86" loading="lazy"></iframe>';
+          row.after(div);
+          row.classList.add('playing');
+          // 暂停站内背景音乐，避免两首同时响
+          var bgm = document.getElementById('bgm');
+          if (bgm && !bgm.paused) document.getElementById('navMusicToggle').click();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
