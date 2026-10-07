@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>半导体 | 硅基火花 · chengguihu</title>
-  <meta name="description" content="公众号「硅基火花」文章合集，碎片化记录半导体知识与工程实战。" />
-  <link rel="stylesheet" href="css/style.css?v=20261007e" />
+  <title>半导体Learning | chengguihu</title>
+  <meta name="description" content="半导体 Learning：碎片化记录半导体知识与工程实战。" />
+  <link rel="stylesheet" href="css/style.css?v=20261007f" />
   <style>
     /* 半导体页密码门（与 Life 页同款） */
     .art-lock {
@@ -56,8 +56,8 @@
       <div class="nav-right">
         <nav class="nav-links">
           <a href="index.html#hot">热榜</a>
-          <a href="articles.html" class="active">半导体</a>
           <a href="life.html">Life</a>
+          <a href="articles.html" class="active">Work</a>
           <a href="ai.html">AI</a>
           <a href="python.html">Python</a>
           <a href="linux.html">Linux</a>
@@ -77,20 +77,13 @@
   <section class="hero hero-small">
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
-      <h1 class="hero-title">半导体</h1>
-      <p class="hero-motto">公众号「硅基火花」文章合集，碎片化记录半导体知识与工程实战。</p>
+      <h1 class="hero-title">半导体Learning</h1>
+      <p class="hero-motto">在 Fab 里，没有消息就是最好的消息。</p>
     </div>
   </section>
 
   <!-- 公众号文章 -->
   <section class="section section-alt" id="articles">
-    <div class="section-head">
-      <span class="section-kicker">WECHAT ARTICLES</span>
-    </div>
-    <p class="section-lead">
-      同步发布在「硅基火花」微信公众号，碎片化记录半导体知识与工程实战。
-    </p>
-
     <!-- 密码门 -->
     <div class="art-lock" id="artLock">
       <div class="lock-icon">🔒</div>
@@ -109,19 +102,16 @@
       <article class="article-item">
         <div class="article-body">
           <h3><a href="https://mp.weixin.qq.com/s/a-kPv1ezROvfo-KFl_qRaA" target="_blank" rel="noopener">MOS、MIM、MOM，它们到底有什么区别？</a></h3>
-          <div class="article-meta"><span>硅基火花</span></div>
         </div>
       </article>
       <article class="article-item">
         <div class="article-body">
           <h3><a href="https://mp.weixin.qq.com/s/0Z_iQ3csJyxFfw73mveWHg" target="_blank" rel="noopener">半导体入门第一门课：PN 结是怎么工作的？</a></h3>
-          <div class="article-meta"><span>硅基火花</span></div>
         </div>
       </article>
       <article class="article-item">
         <div class="article-body">
           <h3><a href="https://mp.weixin.qq.com/s/MxarTJugjZw_eSbUC65pjQ" target="_blank" rel="noopener">MOS 管为什么会漏电、老化、击穿？一文看懂 Gate Oxide 退化</a></h3>
-          <div class="article-meta"><span>硅基火花</span></div>
         </div>
       </article>
     </div>
@@ -129,7 +119,7 @@
     <script>
       // 密码门：前端校验（djb2 哈希比对，改密码改 PASS_HASH）
       (function () {
-        var PASS_HASH = 3218447520; // '硅基火花'
+        var PASS_HASH = 3218447520; // 公众号名字
         function djb2(s) {
           var h = 5381;
           for (var i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) & 0xFFFFFFFF;
@@ -165,10 +155,10 @@
     </script>
   </section>
   <footer class="footer">
-    <p>© 2026 硅基火花 · <span class="brand-chip">◍</span> chengguihu</p>
+    <p>© 2026 <span class="brand-chip">◍</span> chengguihu</p>
     <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
   </footer>
 
-  <script src="js/main.js?v=20261007e"></script>
+  <script src="js/main.js?v=20261007f"></script>
 </body>
 </html>

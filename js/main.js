@@ -274,7 +274,7 @@
           var thumb = a.thumb
             ? '<img class="article-thumb" src="' + esc(a.thumb) + '" alt="" loading="lazy" referrerpolicy="no-referrer" />'
             : "";
-          var meta = '<div class="article-meta"><span>' + esc(a.account || "硅基火花") + "</span>" +
+          var meta = '<div class="article-meta">' +
             (a.date ? "<span>" + esc(a.date) + "</span>" : "") + "</div>";
           return '<article class="article-item">' +
             '<div class="article-body">' +
