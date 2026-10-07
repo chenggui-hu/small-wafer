@@ -84,24 +84,7 @@
     drops.forEach(function (d) { d.classList.remove("open"); });
   });
 
-  // ---- 移动端汉堡菜单 ----
-  var burger = document.getElementById("navBurger");
-  var navLinks = document.querySelector(".nav-links");
-  if (burger && navLinks) {
-    burger.addEventListener("click", function (e) {
-      e.stopPropagation();
-      var open = navLinks.classList.toggle("nav-open");
-      burger.classList.toggle("open", open);
-      burger.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    navLinks.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        navLinks.classList.remove("nav-open");
-        burger.classList.remove("open");
-        burger.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
+  // ---- 移动端菜单：≤760px 常驻平铺显示，无需 JS 开合 ----
 
   // ---- 倒计时 ----
   function updateCountdown() {

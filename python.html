@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python | 硅基火花 · small-wafer</title>
   <meta name="description" content="工作中用到的 Python 脚本与自动化实践。" />
-  <link rel="stylesheet" href="css/style.css?v=20261007c" />
+  <link rel="stylesheet" href="css/style.css?v=20261007d" />
   <style>
     /* Python 速查页专用样式（仅本页生效） */
     .doc-toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 26px; }
@@ -36,6 +36,10 @@
     .cmd-table tbody tr:hover td { background: #f8fafc; }
     .cmd-table td:first-child { white-space: nowrap; }
     .cmd-table .desc { color: var(--ink-soft); }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 4px; }
+    .table-wrap::-webkit-scrollbar { height: 6px; }
+    .table-wrap::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .cmd-table td, .cmd-table th { overflow-wrap: anywhere; }
 
     code {
       font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
@@ -95,10 +99,7 @@
           <a href="tools.html">Software</a>
           <a href="annual.html">年度音乐/电影</a>
         </nav>
-<button class="nav-burger" id="navBurger" type="button" aria-label="打开菜单" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-                <div class="nav-countdown" id="navCountdown">
+<div class="nav-countdown" id="navCountdown">
           <span class="countdown-date">--/--</span>
           <span class="countdown-days">--</span>
         </div>
@@ -136,7 +137,7 @@
       <p class="doc-intro">Python 是动态类型语言：变量不用声明类型，赋什么就是什么。核心内置类型就 6 个，吃透它们就够日常用了。</p>
 
       <h4>数据类型和变量</h4>
-      <table class="cmd-table">
+      <div class="table-wrap"><table class="cmd-table">
         <thead>
           <tr><th>类型</th><th>写法示例</th><th>要点</th></tr>
         </thead>
@@ -148,7 +149,7 @@
           <tr><td>空值 <code>None</code></td><td><code>r = None</code></td><td class="desc">不是 0 也不是空串，表示「没有值」</td></tr>
           <tr><td>除法</td><td><code>10 / 3</code> · <code>10 // 3</code> · <code>10 % 3</code></td><td class="desc"><code>/</code> 得浮点，<code>//</code> 地板除，<code>%</code> 取余</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h4>字符串与编码</h4>
       <pre><code>s = "中文abc"
@@ -239,7 +240,7 @@ def nop():          # 空函数先占位
     pass</code></pre>
 
       <h4>函数的参数</h4>
-      <table class="cmd-table">
+      <div class="table-wrap"><table class="cmd-table">
         <thead>
           <tr><th>参数类型</th><th>写法</th><th>说明</th></tr>
         </thead>
@@ -249,7 +250,7 @@ def nop():          # 空函数先占位
           <tr><td>可变参数</td><td><code>def f(*nums)</code></td><td class="desc">收进 tuple，调用可传任意个</td></tr>
           <tr><td>关键字参数</td><td><code>def f(**kw)</code></td><td class="desc">收进 dict，扩展函数能力而不破坏接口</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <pre><code>def enroll(name, gender, age=6, city='Beijing'):
     print(name, gender, age, city)
 
@@ -282,7 +283,7 @@ fact(5)        # 120。注意：层数过深会栈溢出（默认约 1000 层）
     <div class="doc-section" id="py-office">
       <h3>三、办公自动化常用库</h3>
       <p class="doc-intro">批量处理 Excel / Word / PDF / 文件，是 Python 在办公室最实在的用法。全部 <code>pip install</code> 即得。</p>
-      <table class="cmd-table">
+      <div class="table-wrap"><table class="cmd-table">
         <thead>
           <tr><th>库</th><th>用途</th><th>典型代码</th></tr>
         </thead>
@@ -318,7 +319,7 @@ fact(5)        # 120。注意：层数过深会栈溢出（默认约 1000 层）
             <td><code>with smtplib.SMTP_SSL('smtp.qq.com') as s:</code></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <pre><code># 实战样例：汇总当前目录所有 Excel 的第一个 sheet
 import pandas as pd
 from pathlib import Path
@@ -333,7 +334,7 @@ pd.concat(rows).to_excel('汇总.xlsx', index=False)</code></pre>
     <div class="doc-section" id="py-spider">
       <h3>四、爬虫常用库</h3>
       <p class="doc-intro">爬虫三步走：请求（requests）→ 解析（bs4 / re / lxml）→ 存储（csv / pandas）。动静分离：静态页 requests 就够，动态渲染上浏览器自动化。</p>
-      <table class="cmd-table">
+      <div class="table-wrap"><table class="cmd-table">
         <thead>
           <tr><th>库</th><th>定位</th><th>典型代码</th></tr>
         </thead>
@@ -374,7 +375,7 @@ pd.concat(rows).to_excel('汇总.xlsx', index=False)</code></pre>
             <td><code>scrapy startproject demo</code> · <code>scrapy crawl spider1</code></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <pre><code># 最小可用爬虫：抓标题并存 CSV
 import requests
 from bs4 import BeautifulSoup
@@ -396,6 +397,6 @@ pd.DataFrame({'标题': titles}).to_csv('titles.csv', index=False)</code></pre>
     <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
   </footer>
 
-  <script src="js/main.js?v=20261007c"></script>
+  <script src="js/main.js?v=20261007d"></script>
 </body>
 </html>
