@@ -155,6 +155,20 @@ a { color: inherit; text-decoration: none; }
 .nav-links a:hover { color: var(--brand); }
 .nav-links a.active { color: var(--brand); font-weight: 700; }
 
+/* 移动端汉堡按钮（桌面隐藏，≤760px 显示） */
+.nav-burger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 42px; height: 36px; padding: 0 10px; flex: none;
+  background: none; border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+}
+.nav-burger span {
+  display: block; height: 2px; width: 100%; background: var(--ink);
+  border-radius: 2px; transition: transform .25s, opacity .25s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* 导航下拉菜单 */
 .nav-drop { position: relative; }
 .nav-drop-btn {
@@ -477,10 +491,17 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 760px) {
   .about-grid { grid-template-columns: 1fr; }
-  .nav-links { gap: 12px; }
-  .nav-links a:not(.nav-cta) { display: none; }
-  .nav-drop { display: none; }
+  .nav-burger { display: flex; }
   .nav-music { display: none; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0; flex-wrap: nowrap;
+    background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 6px 20px 12px; box-shadow: var(--shadow);
+  }
+  .nav-links.nav-open { display: flex; }
+  .nav-links a { display: block; padding: 11px 4px; border-bottom: 1px dashed var(--line); font-size: 0.95rem; white-space: normal; }
+  .nav-links a:last-child { border-bottom: none; }
   .hero { padding: 50px 20px 40px; }
   .section { padding: 60px 20px; }
   .skill-group { align-items: flex-start; flex-direction: column; gap: 6px; }

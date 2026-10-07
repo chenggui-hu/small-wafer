@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python | 硅基火花 · small-wafer</title>
   <meta name="description" content="工作中用到的 Python 脚本与自动化实践。" />
-  <link rel="stylesheet" href="css/style.css?v=20261006a" />
+  <link rel="stylesheet" href="css/style.css?v=20261007c" />
   <style>
     /* Python 速查页专用样式（仅本页生效） */
     .doc-toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 26px; }
@@ -95,7 +95,10 @@
           <a href="tools.html">Software</a>
           <a href="annual.html">年度音乐/电影</a>
         </nav>
-        <div class="nav-countdown" id="navCountdown">
+<button class="nav-burger" id="navBurger" type="button" aria-label="打开菜单" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+                <div class="nav-countdown" id="navCountdown">
           <span class="countdown-date">--/--</span>
           <span class="countdown-days">--</span>
         </div>
@@ -393,6 +396,6 @@ pd.DataFrame({'标题': titles}).to_csv('titles.csv', index=False)</code></pre>
     <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
   </footer>
 
-  <script src="js/main.js?v=20261006a"></script>
+  <script src="js/main.js?v=20261007c"></script>
 </body>
 </html>
