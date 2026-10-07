@@ -3,9 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>半导体 | 硅基火花 · small-wafer</title>
+  <title>半导体 | 硅基火花 · chengguihu</title>
   <meta name="description" content="公众号「硅基火花」文章合集，碎片化记录半导体知识与工程实战。" />
-  <link rel="stylesheet" href="css/style.css?v=20261007d" />
+  <link rel="stylesheet" href="css/style.css?v=20261007e" />
+  <style>
+    /* 半导体页密码门（与 Life 页同款） */
+    .art-lock {
+      max-width: 380px; margin: 0 auto; text-align: center;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); padding: 34px 28px;
+    }
+    .art-lock .lock-icon { font-size: 2rem; }
+    .art-lock h3 { margin: 10px 0 6px; color: var(--ink); }
+    .art-lock p { color: var(--ink-soft); font-size: 0.88rem; margin: 0 0 18px; }
+    .art-pass-row { display: flex; gap: 10px; justify-content: center; }
+    #artPass {
+      width: 180px; text-align: center; font-size: 1rem;
+      padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px;
+      outline: none; font-family: inherit;
+    }
+    #artPass:focus { border-color: var(--brand); }
+    #artUnlockBtn {
+      padding: 10px 18px; border: none; border-radius: 10px; cursor: pointer;
+      background: var(--brand); color: #fff; font-weight: 700;
+    }
+    #artPass.wrong { border-color: #dc2626; animation: art-shake .3s; }
+    @keyframes art-shake { 0%,100%{transform:none} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+    .art-err { color: #dc2626; font-size: 0.84rem; margin-top: 12px; visibility: hidden; }
+  </style>
 </head>
 <body>
   <!-- 背景音乐 -->
@@ -17,7 +42,7 @@
       <div class="nav-left">
         <a class="brand" href="index.html" title="回到首页">
           <img class="brand-avatar" src="assets/avatar.jpg" alt="small wafer 头像" />
-          <span>small-wafer</span>
+          <span>chengguihu</span>
         </a>
         <div class="nav-music">
           <button class="nav-music-toggle" id="navMusicToggle" aria-label="播放/暂停">▶</button>
@@ -66,7 +91,20 @@
       同步发布在「硅基火花」微信公众号，碎片化记录半导体知识与工程实战。
     </p>
 
-    <div class="article-list" id="articleList">
+    <!-- 密码门 -->
+    <div class="art-lock" id="artLock">
+      <div class="lock-icon">🔒</div>
+      <h3>仅限内部查阅</h3>
+      <p>请输入公众号名字</p>
+      <div class="art-pass-row">
+        <input id="artPass" type="text" maxlength="10"
+          placeholder="公众号名字" autocomplete="off" />
+        <button id="artUnlockBtn" type="button">解锁</button>
+      </div>
+      <div class="art-err" id="artErr">不对哦，再想想</div>
+    </div>
+
+    <div class="article-list" id="articleList" style="display: none;">
       <!-- 兜底内容：JS 加载 assets/articles.json 成功后会被替换 -->
       <article class="article-item">
         <div class="article-body">
@@ -87,14 +125,50 @@
         </div>
       </article>
     </div>
-  </section>
 
-  <!-- 页脚 -->
+    <script>
+      // 密码门：前端校验（djb2 哈希比对，改密码改 PASS_HASH）
+      (function () {
+        var PASS_HASH = 3218447520; // '硅基火花'
+        function djb2(s) {
+          var h = 5381;
+          for (var i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) & 0xFFFFFFFF;
+          return h >>> 0;
+        }
+        var lock = document.getElementById('artLock');
+        var secret = document.getElementById('articleList');
+        var input = document.getElementById('artPass');
+        var btn = document.getElementById('artUnlockBtn');
+        var err = document.getElementById('artErr');
+
+        function unlock() {
+          lock.style.display = 'none';
+          secret.style.display = 'block';
+        }
+        function tryUnlock() {
+          if (djb2(input.value.trim()) === PASS_HASH) {
+            try { sessionStorage.setItem('articles_unlocked', '1'); } catch (e) {}
+            unlock();
+          } else {
+            err.style.visibility = 'visible';
+            input.classList.remove('wrong');
+            void input.offsetWidth;
+            input.classList.add('wrong');
+            input.value = '';
+            input.focus();
+          }
+        }
+        try { if (sessionStorage.getItem('articles_unlocked') === '1') unlock(); } catch (e) {}
+        btn.addEventListener('click', tryUnlock);
+        input.addEventListener('keydown', function (e) { if (e.key === 'Enter') tryUnlock(); });
+      })();
+    </script>
+  </section>
   <footer class="footer">
-    <p>© 2026 硅基火花 · <span class="brand-chip">◍</span> small-wafer</p>
+    <p>© 2026 硅基火花 · <span class="brand-chip">◍</span> chengguihu</p>
     <p class="footer-sub">Built with ❤️ and GitHub Pages</p>
   </footer>
 
-  <script src="js/main.js?v=20261007d"></script>
+  <script src="js/main.js?v=20261007e"></script>
 </body>
 </html>
