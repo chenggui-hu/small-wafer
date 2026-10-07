@@ -5,7 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI | 硅基火花 · small-wafer</title>
   <meta name="description" content="常用的 AI 工具、提示词与实践心得。" />
-  <link rel="stylesheet" href="css/style.css?v=20261006a" />
+  <link rel="stylesheet" href="css/style.css?v=20261007b" />
+  <style>
+    /* AI 页专用样式（仅本页生效） */
+    .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 720px; }
+    .ai-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      overflow: hidden; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+    }
+    .ai-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0, 0, 0, .12); }
+    .ai-card-head {
+      height: 150px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .ai-card-head.gpt { background: linear-gradient(135deg, #10a37f, #0d8a6c 55%, #0b6e57); }
+    .ai-card-head.gemini { background: linear-gradient(135deg, #4e8df5, #7b5cf0 55%, #9b72f2); }
+    .ai-card-head img { width: 72px; height: 72px; border-radius: 18px; background: rgba(255, 255, 255, .14); padding: 8px; }
+    .ai-badge {
+      position: absolute; top: 12px; right: 12px; background: rgba(255, 255, 255, .92);
+      color: #1f2937; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 8px;
+    }
+    .ai-card-body { padding: 16px 20px 20px; }
+    .ai-brand { color: var(--ink-soft); font-size: 0.86rem; margin-bottom: 6px; }
+    .ai-title { margin: 0 0 8px; font-size: 1.08rem; color: var(--ink); }
+    .ai-desc { color: var(--ink-soft); font-size: 0.88rem; line-height: 1.7; margin: 0 0 16px; }
+    .ai-price-row {
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-top: 1px solid var(--line); padding-top: 14px;
+    }
+    .ai-price { font-size: 1.45rem; font-weight: 800; color: var(--ink); }
+    .ai-price .rmb { font-size: 1rem; font-weight: 700; }
+    .ai-price-note { color: var(--ink-soft); font-size: 0.8rem; }
+  </style>
 </head>
 <body>
   <!-- 背景音乐 -->
@@ -37,13 +68,8 @@
           <a href="python.html">Python</a>
           <a href="linux.html">Linux</a>
           <a href="webapps.html">常用网页</a>
-          <div class="nav-drop">
-            <button class="nav-drop-btn" type="button">Software <span class="caret">▾</span></button>
-            <div class="nav-drop-menu">
-              <a href="tools.html">🖥 软件集</a>
-              <a href="annual.html">🎵 年度音乐/电影</a>
-            </div>
-          </div>
+          <a href="tools.html">Software</a>
+          <a href="annual.html">年度音乐/电影</a>
         </nav>
         <div class="nav-countdown" id="navCountdown">
           <span class="countdown-date">--/--</span>
@@ -69,7 +95,39 @@
       <h2>AI</h2>
     </div>
     <p class="section-lead">常用的 AI 工具、提示词与实践心得。</p>
-    <p class="about-note">📝 内容整理中，后续补充。</p>
+
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-card-head gpt">
+          <img src="assets/icons/chatgpt.png" alt="ChatGPT" />
+          <span class="ai-badge">Plus</span>
+        </div>
+        <div class="ai-card-body">
+          <p class="ai-brand">ChatGPT</p>
+          <h3 class="ai-title">ChatGPT Plus 月卡</h3>
+          <p class="ai-desc">官方 $20/月。GPT 旗舰模型、更长上下文与高级语音额度，日常主力。</p>
+          <div class="ai-price-row">
+            <span class="ai-price"><span class="rmb">￥</span>150<span class="ai-price-note"> / 月</span></span>
+            <span class="ai-price-note">行情参考价，随汇率与渠道波动</span>
+          </div>
+        </div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-head gemini">
+          <img src="assets/icons/gemini.png" alt="Gemini" />
+          <span class="ai-badge">Pro</span>
+        </div>
+        <div class="ai-card-body">
+          <p class="ai-brand">Gemini</p>
+          <h3 class="ai-title">Gemini Pro 年卡</h3>
+          <p class="ai-desc">长上下文与多模态见长，配合 NotebookLM 做资料整理性价比极高。</p>
+          <div class="ai-price-row">
+            <span class="ai-price"><span class="rmb">￥</span>30<span class="ai-price-note"> / 年</span></span>
+            <span class="ai-price-note">活动渠道行情价</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 页脚 -->

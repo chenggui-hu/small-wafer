@@ -5,7 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Life | 硅基火花 · small-wafer</title>
   <meta name="description" content="记录日常、读书与随想。" />
-  <link rel="stylesheet" href="css/style.css?v=20261006a" />
+  <link rel="stylesheet" href="css/style.css?v=20261007b" />
+  <style>
+    /* Life 页专用样式（仅本页生效） */
+    .life-lock {
+      max-width: 380px; margin: 0 auto; text-align: center;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); padding: 34px 28px;
+    }
+    .life-lock .lock-icon { font-size: 2rem; }
+    .life-lock h3 { margin: 10px 0 6px; color: var(--ink); }
+    .life-lock p { color: var(--ink-soft); font-size: 0.88rem; margin: 0 0 18px; }
+    .life-pass-row { display: flex; gap: 10px; justify-content: center; }
+    #lifePass {
+      width: 140px; text-align: center; letter-spacing: 8px; font-size: 1.2rem;
+      padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px;
+      outline: none; font-family: ui-monospace, Consolas, monospace;
+    }
+    #lifePass:focus { border-color: var(--brand); }
+    #lifeUnlockBtn {
+      padding: 10px 18px; border: none; border-radius: 10px; cursor: pointer;
+      background: var(--brand); color: #fff; font-weight: 700;
+    }
+    #lifePass.wrong { border-color: #dc2626; animation: shake .3s; }
+    @keyframes shake { 0%,100%{transform:none} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+    .life-err { color: #dc2626; font-size: 0.84rem; margin-top: 12px; visibility: hidden; }
+
+    /* 诗句 */
+    .poem-card {
+      max-width: 560px; margin: 0 auto;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); padding: 30px 34px;
+    }
+    .poem-card h3 {
+      margin: 0 0 16px; font-size: 1.15rem; color: var(--brand-dark);
+      border-left: 4px solid var(--brand); padding-left: 12px;
+    }
+    .poem-body { margin: 0; padding: 0; list-style: none; }
+    .poem-body li {
+      padding: 9px 0; color: var(--ink); font-size: 0.98rem; line-height: 1.9;
+      border-bottom: 1px dashed var(--line); letter-spacing: 0.5px;
+    }
+    .poem-body li:last-child { border-bottom: none; }
+    .poem-tip { color: var(--ink-soft); font-size: 0.86rem; margin: 14px 0 0; text-align: right; }
+  </style>
 </head>
 <body>
   <!-- 背景音乐 -->
@@ -37,13 +80,8 @@
           <a href="python.html">Python</a>
           <a href="linux.html">Linux</a>
           <a href="webapps.html">常用网页</a>
-          <div class="nav-drop">
-            <button class="nav-drop-btn" type="button">Software <span class="caret">▾</span></button>
-            <div class="nav-drop-menu">
-              <a href="tools.html">🖥 软件集</a>
-              <a href="annual.html">🎵 年度音乐/电影</a>
-            </div>
-          </div>
+          <a href="tools.html">Software</a>
+          <a href="annual.html">年度音乐/电影</a>
         </nav>
         <div class="nav-countdown" id="navCountdown">
           <span class="countdown-date">--/--</span>
@@ -69,7 +107,73 @@
       <h2>Life</h2>
     </div>
     <p class="section-lead">记录日常、读书与随想。</p>
-    <p class="about-note">📝 内容整理中，后续补充。</p>
+
+    <!-- 密码门 -->
+    <div class="life-lock" id="lifeLock">
+      <div class="lock-icon">🔒</div>
+      <h3>这里是一方小天地</h3>
+      <p>输入 4 位密码查看内容</p>
+      <div class="life-pass-row">
+        <input id="lifePass" type="password" inputmode="numeric" maxlength="4"
+          placeholder="••••" autocomplete="off" />
+        <button id="lifeUnlockBtn" type="button">解锁</button>
+      </div>
+      <div class="life-err" id="lifeErr">密码不对，再想想</div>
+    </div>
+
+    <!-- 密码正确后显示的内容 -->
+    <div class="poem-card" id="lifeSecret" style="display: none;">
+      <h3>青云志</h3>
+      <ul class="poem-body">
+        <li>无人扶我青云志，我自踏雪至山巅。</li>
+        <li>倘若命中无此运，孤身亦可登昆仑。</li>
+        <li>苦厄难夺凌云志，不死总有出头日。</li>
+        <li>他朝若有翻身时，生吃黄连也叫甜。</li>
+        <li>风霜压我两三年，心中早已无怨言。</li>
+        <li>人间总有一两风，填我十万八千梦。</li>
+        <li>岁月磨我少年志，时光凉我善良心。</li>
+        <li>人间总有一丝情，抵我心中意难平。</li>
+      </ul>
+      <p class="poem-tip">—— 与自己共勉</p>
+    </div>
+
+    <script>
+      // 4 位密码门：仅前端校验（djb2 哈希比对，改密码改 PASS_HASH）
+      (function () {
+        var PASS_HASH = 2088260175; // '0721'
+        function djb2(s) {
+          var h = 5381;
+          for (var i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) & 0xFFFFFFFF;
+          return h >>> 0;
+        }
+        var lock = document.getElementById('lifeLock');
+        var secret = document.getElementById('lifeSecret');
+        var input = document.getElementById('lifePass');
+        var btn = document.getElementById('lifeUnlockBtn');
+        var err = document.getElementById('lifeErr');
+
+        function unlock() {
+          lock.style.display = 'none';
+          secret.style.display = 'block';
+        }
+        function tryUnlock() {
+          if (djb2(input.value) === PASS_HASH) {
+            try { sessionStorage.setItem('life_unlocked', '1'); } catch (e) {}
+            unlock();
+          } else {
+            err.style.visibility = 'visible';
+            input.classList.remove('wrong');
+            void input.offsetWidth; // 重触发动画
+            input.classList.add('wrong');
+            input.value = '';
+            input.focus();
+          }
+        }
+        try { if (sessionStorage.getItem('life_unlocked') === '1') unlock(); } catch (e) {}
+        btn.addEventListener('click', tryUnlock);
+        input.addEventListener('keydown', function (e) { if (e.key === 'Enter') tryUnlock(); });
+      })();
+    </script>
   </section>
 
   <!-- 页脚 -->
