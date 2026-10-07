@@ -140,7 +140,7 @@
     <script>
       // 4 位密码门：仅前端校验（djb2 哈希比对，改密码改 PASS_HASH）
       (function () {
-        var PASS_HASH = 2088260175; // '0721'
+        var PASS_HASH = 2088365940; // '3561'
         function djb2(s) {
           var h = 5381;
           for (var i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) & 0xFFFFFFFF;
