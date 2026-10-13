@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 抓取半导体 Fab 技术类新闻 RSS，聚合生成 assets/fabnews.json
+输出中英文各 Top10（en / cn 两个数组），前端左右两列展示。
 
-数据源：
+英文源：
   - SemiEngineering.com      （半导体工程深度博客，全 fab 向）
   - EE Times                 （电子工程行业，含大量半导体报道）
   - IEEE Spectrum 半导体频道 （IEEE 半导体专题）
   - SemiWiki                 （半导体工艺/设备社区）
+中文源：
+  - IT之家                   （科技资讯，关键词过滤出芯片/半导体内容）
+  - Solidot                  （科技杂谈，关键词过滤）
 
-过滤：标题/摘要命中 fab 技术关键词优先；不足 8 条时按时间补齐。
+过滤：标题/摘要命中关键词优先；不足 10 条时按时间补齐。
 网络通道：直连 → Clash 7890 → 10809 → 1080 → 8889 → 33210
 内容无变化时不写文件（避免空提交）。
 
-用法：python scripts/fetch_fabnews.py [数量，默认14]
+用法：python scripts/fetch_fabnews.py [每列数量，默认10]
 """
 import json
 import os
@@ -34,11 +38,16 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "fabnews.json")
 
-FEEDS = [
+FEEDS_EN = [
     ("SemiEngineering", "https://semiengineering.com/feed/"),
     ("EE Times",        "https://www.eetimes.com/feed/"),
     ("IEEE Spectrum",   "https://spectrum.ieee.org/feeds/topic/semiconductors.rss"),
     ("SemiWiki",        "https://semiwiki.com/feed/"),
+]
+
+FEEDS_CN = [
+    ("IT之家", "https://www.ithome.com/rss/"),
+    ("Solidot", "https://www.solidot.org/index.rss"),
 ]
 
 PROXIES = [
@@ -50,13 +59,21 @@ PROXIES = [
     "http://127.0.0.1:33210",
 ]
 
-# fab / 工艺技术关键词（命中才收录；数量不足时放宽）
+# 英文关键词
 KEYWORDS = re.compile(
     r"fab|foundry|wafer|litho|lithography|EUV|DUV|etch|deposit|yield|TSMC|"
     r"SMIC|UMC|GlobalFoundries|packaging|chiplet|advanced node|gate[- ]all[- ]around|"
     r"GAA|FinFET|DRAM|NAND|HBM|cleanroom|metrology|CMP|photomask|ASML|"
     r"semiconductor|process node|Moore|die|substrate|memory chip|NOR|"
     r"coWoS|fan-?out|silicon|晶圆|光刻|封装|良率|代工",
+    re.I,
+)
+
+# 中文关键词（IT之家/Solidot 是综合源，必须过滤）
+KEYWORDS_CN = re.compile(
+    r"芯片|半导体|晶圆|光刻|封装|良率|代工|台积电|中芯国际|存储|闪存|内存颗粒|"
+    r"DRAM|NAND|HBM|EUV|制程|晶圆厂|fab|SoC|GPU|CPU|纳米|Chiplet|先进封装|"
+    r"离子注入|刻蚀|薄膜|靶材|光刻胶|MOS|碳化硅|氮化镓",
     re.I,
 )
 
@@ -119,11 +136,10 @@ def parse_rss(xml_text, source_name):
     return out
 
 
-def main():
-    count = int(sys.argv[1]) if len(sys.argv) > 1 else 14
-
+def collect(feeds, count, kw):
+    """抓一组源，关键词命中优先 + 按日期补齐，返回 top count 条"""
     all_items = []
-    for name, url in FEEDS:
+    for name, url in feeds:
         print("[..] 拉取 %s ..." % name)
         raw = get_feed(url)
         if raw:
@@ -131,49 +147,52 @@ def main():
             print("  [OK] %s：%d 条" % (name, len(items)))
             all_items.extend(items)
 
-    if not all_items:
-        print("[!] 所有源都失败，保留现有 fabnews.json 不覆盖")
-        sys.exit(2)
-
-    # 去重（同链接）
     seen, uniq = set(), []
     for it in all_items:
         if it["url"] in seen:
             continue
         seen.add(it["url"])
-        it["hit"] = bool(KEYWORDS.search(it["title"] + " " + it["summary"]))
+        it["hit"] = bool(kw.search(it["title"] + " " + it["summary"]))
         uniq.append(it)
 
-    # fab 关键词命中优先，其余按时间
-    dated = [it for it in uniq if it.pop("hit") and it["date"]]
-    dated.sort(key=lambda x: x["date"], reverse=True)
-    picked = dated[:count]
+    hits = [it for it in uniq if it["date"] and it["hit"]]
+    hits.sort(key=lambda x: x["date"], reverse=True)
+    picked = hits[:count]
 
     # 命中的太少时，用未命中但带日期的补齐
-    if len(picked) < 8:
-        rest = [it for it in uniq if it.pop("hit", False) is False or not it.get("date")]
-        rest2 = [it for it in uniq if it not in picked]
-        rest2.sort(key=lambda x: x["date"], reverse=True)
-        for it in rest2:
-            if len(picked) >= 10:
-                break
-            picked.append(it)
+    if len(picked) < count:
+        rest = [it for it in uniq if it["date"] and not it["hit"]]
+        rest.sort(key=lambda x: x["date"], reverse=True)
+        picked += rest[: count - len(picked)]
 
     for i, it in enumerate(picked, 1):
         it["rank"] = i
         it.pop("hit", None)
+    return picked
+
+
+def main():
+    count = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+
+    en = collect(FEEDS_EN, count, KEYWORDS)
+    cn = collect(FEEDS_CN, count, KEYWORDS_CN)
+
+    if not en and not cn:
+        print("[!] 所有源都失败，保留现有 fabnews.json 不覆盖")
+        sys.exit(2)
 
     payload = {
         "updated": time.strftime("%Y-%m-%d %H:%M"),
         "note": "每周一 07:00 自动更新",
-        "items": picked,
+        "en": en,
+        "cn": cn,
     }
 
     if os.path.exists(OUT):
         try:
             with open(OUT, "r", encoding="utf-8") as f:
                 old = json.load(f)
-            if old.get("items") == payload["items"]:
+            if old.get("en") == payload["en"] and old.get("cn") == payload["cn"]:
                 print("[=] 内容无变化，跳过写入")
                 return
         except Exception:
@@ -182,9 +201,11 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
-    print("[OK] 已写入 %s（%d 条）" % (OUT, len(picked)))
-    for it in picked[:3]:
-        print("   %d. [%s] %s" % (it["rank"], it["source"], it["title"][:40]))
+    print("[OK] 已写入 %s（EN %d 条 / CN %d 条）" % (OUT, len(en), len(cn)))
+    for it in en[:2]:
+        print("   EN %d. [%s] %s" % (it["rank"], it["source"], it["title"][:40]))
+    for it in cn[:2]:
+        print("   CN %d. [%s] %s" % (it["rank"], it["source"], it["title"][:40]))
 
 
 if __name__ == "__main__":

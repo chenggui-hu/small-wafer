@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-13 20:54",
+  "updated": "2026-10-13 21:07",
   "note": "每周一 07:00 自动更新",
-  "items": [
+  "en": [
     {
       "title": "Chip Industry Technical Paper Roundup: Oct. 13",
       "url": "https://semiengineering.com/chip-industry-technical-paper-roundup-oct-13-2/",
@@ -81,38 +81,88 @@
       "date": "2026-10-12",
       "summary": "Europe’s CRA turns chip security into auditable sign-off, pushing silicon teams to prove resilience before 2027. The post Security Becomes a Sign-off Item appea",
       "rank": 10
+    }
+  ],
+  "cn": [
+    {
+      "title": "英伟达 DLSS 5 最新模型 10 月 16 日推送：性能相比 9 月翻倍，4K 显存占用降低 20%",
+      "url": "https://www.ithome.com/1/012/564.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，英伟达官方刚刚宣布，DLSS 5 的 3D 引导神经渲染模型将在本周迎来重大性能更新，新的模型将于 10 月 16 日正式推送。 据英伟达官方博客，通过系统性的渲染管线优化与神经模型精炼，新模型的性能达到 9 月版本的 2 倍，GPU 开销降低约 50%。与 3 月首次技术演示相比，累",
+      "rank": 1
     },
     {
-      "title": "Chip Industry Week In Review",
-      "url": "https://semiengineering.com/chip-industry-week-in-review-159/",
-      "source": "SemiEngineering",
-      "date": "2026-10-09",
-      "summary": "$2B foundry pact; hyper-NA EUV; TSMC, Samsung financials; Canon readies nanoimprint; AI chips under scrutiny; $10T data center buildout; $1.5B SiC boost; chip s",
-      "rank": 11
+      "title": "闪迪推出 Guardian 哨兵系列高耐久存储卡：512GB 行车记录仪卡可录 4 万小时，支持 4K 录制与 4 万小时寿命",
+      "url": "https://www.ithome.com/1/012/562.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，闪迪（Sandisk）昨日宣布推出哨兵（Guardian）系列高耐久存储产品，面向需要不间断录制的行车记录仪、家庭智能摄像设备及车辆哨兵模式等场景。 据闪迪官方新闻稿，该系列产品针对持续循环录像的严苛需求设计，可在严苛环境条件下保持稳定写入。 闪迪公司消费级产品副总裁 Susan Pa",
+      "rank": 2
     },
     {
-      "title": "Manfred Horstmann: GlobalFoundries Bets on FDX Fusion for Physical AI",
-      "url": "https://www.eetimes.com/manfred-horstmann-globalfoundries-bets-on-fdx-fusion-for-physical-ai/",
-      "source": "EE Times",
-      "date": "2026-10-09",
-      "summary": "GlobalFoundries said strained-silicon FD-SOI can deliver 7-nm-class performance without EUV and open a new market for Europe. The post Manfred Horstmann: Global",
-      "rank": 12
+      "title": "阶跃终端首款大模型原生智能体手机 STEPX Neo 先行版发布：骁龙 8 系芯片，全栈价 3999 元起",
+      "url": "https://www.ithome.com/1/012/556.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，阶跃终端首款大模型原生智能体手机 STEPX Neo 先行版今晚正式发布，搭载骁龙 8 系芯片，采用 16GB+256GB 规格方案，并提供碳黑、硅银两种配色，软硬模三位一体 全栈价（包含 STEPX Neo 手机本体、StepAOS+Step Studio、Step 系列模型） 39",
+      "rank": 3
     },
     {
-      "title": "Connecting Chiplets Isn’t Enough – Solving the Data Movement Challenge in Multi-Die Systems",
-      "url": "https://www.eetimes.com/connecting-chiplets-isnt-enough-solving-the-data-movement-challenge-in-multi-die-systems/",
-      "source": "EE Times",
-      "date": "2026-10-09",
-      "summary": "Join this BitCast and explore how extending NoC connectivity across die boundaries enables engineering teams to scale from monolithic SoCs to multi-die architec",
-      "rank": 13
+      "title": "爱芯元智 AX8860 系列大算力芯片发布，性能对标英伟达 DGX Spark 但价格更低",
+      "url": "https://www.ithome.com/1/012/551.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，爱芯元智今日在 2026 中国国际工业博览会上正式发布 AX8860 系列大算力 AI 芯片，定位为专为大模型在边缘和端侧落地打造的算力底座。 AX8860 搭载 16 核 Arm Cortex-A55 CPU 与自研 NPU，提供 256 TOPS 混合精度算力（原生 FP4，无稀疏",
+      "rank": 4
     },
     {
-      "title": "Finding Critical Defects Before They Become Costly Failures: Process Control For Hybrid Bonding And Advanced Packaging",
-      "url": "https://semiengineering.com/finding-critical-defects-before-they-become-costly-failures-process-control-for-hybrid-bonding-and-advanced-packaging/",
-      "source": "SemiEngineering",
-      "date": "2026-10-08",
-      "summary": "How complementary inspection and metrology techniques can detect smaller defects and distinguish among a wide range of defect types within a unified workflow. T",
-      "rank": 14
+      "title": "华为睿影 Z10 模块相机采用海思自研 50Mp 1 英寸 RYYB 传感器",
+      "url": "https://www.ithome.com/1/012/549.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日现场消息，华为今日（10 月 13 日）在上海练秋湖举办 2026 麒麟媒体沟通会，华为半导体业务无线终端芯片产品管理部部长徐松余发表演讲。 麒麟 9050 系列支持与新一代自研 CIS、全定制光学系统和专业影像 ISP 深度协同，可从传感器、光学到芯片处理链路进行端到端创新。值得一提的是，",
+      "rank": 5
+    },
+    {
+      "title": "AMD 首次展示 Verano 霄龙处理器：计划 2027 年上市，支持 LPDDR5X",
+      "url": "https://www.ithome.com/1/012/535.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，AMD 在当地时间 10 月 12 日开幕的 2026 OCP 全球峰会上首次公开展示了下一代 Verano 系列 EPYC 数据中心处理器。 该系列处理器计划于 2027 年推出，将采用 Zen 6 架构，并首次在 EPYC 产品线中支持 LPDDR5X 内存，通过 SOCAMM2 ",
+      "rank": 6
+    },
+    {
+      "title": "苹果首款智能家庭中枢 HomeView 摄像头规格曝光：1130 万像素索尼 IMX614 传感器",
+      "url": "https://www.ithome.com/1/012/498.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，消息人士 pdfu 今天在 X 平台发文称，他已经通过 macOS 26.7 RC1 系统，挖掘出苹果首款智能家庭中枢 HomeView 的摄像头规格。 IT之家注意到， HomeView 使用索尼 IMX614 CMOS 传感器 ，有效像素约 1130 万，可拍摄分辨率为 3744 ",
+      "rank": 7
+    },
+    {
+      "title": "马斯克要用造火箭的思维造芯片：一年设计 10 款快速迭代，所有流程在一个 Terafab 工厂完成",
+      "url": "https://www.ithome.com/1/012/484.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，特斯拉 CEO 埃隆 · 马斯克今日公布了他对 Terafab 芯片工厂的愿景，表示特斯拉和 SpaceX 计划每年在 Terafab 位于美国得克萨斯州的 Giga Texas 研究设施 制造和测试约 10 款芯片 ，以加快开发进程。 马斯克强调，特斯拉与 SpaceX 正在芯片制造",
+      "rank": 8
+    },
+    {
+      "title": "ESA 想要将 voices38 列入恶名盗版市场名单",
+      "url": "https://www.solidot.org/story?sid=85600",
+      "source": "Solidot",
+      "date": "2026-10-13",
+      "summary": "代表美国游戏业的行业组织 Entertainment Software Association (ESA) 向美国贸易代表办公室提议将最近炙手可热的游戏破解黑客 voices38 列入恶名盗版市场名单。匿名黑客 voices38 在短时间内发布了一系列使用 Denuvo DRM 的游戏破解补丁，其中包括《霍格沃茨之遗（",
+      "rank": 9
+    },
+    {
+      "title": "苹果新款 Apple TV 4K 发布，2399 港元起",
+      "url": "https://www.ithome.com/1/012/569.htm",
+      "source": "IT之家",
+      "date": "2026-10-13",
+      "summary": "IT之家 10 月 13 日消息，苹果新款 Apple TV 4K 今日正式发布。该产品将于 11 月 13 日起正式发售，起售价 2399 港元。",
+      "rank": 10
     }
   ]
 }
