@@ -1,34 +1,50 @@
 [
   {
-    "title": "芯片里最贵的不是晶体管,是Metallization",
-    "digest": "金属化工艺的四个死局:连得上、填得满、扛得住、活得久我们聊芯片,永远在聊晶体管:几纳米、FinFET、栅氧厚度、亚阈值摆幅...",
+    "title": "一文讲透大马士革工艺全解析",
+    "digest": "一文讲透半导体大马士革工艺:Via-first、Trench-first、单镶嵌与双镶嵌到底什么关系?",
     "account": "硅基火花",
-    "date": "2026-10-03",
+    "date": "2026-10-14",
     "thumb": "assets/thumbs/thumb-1.jpg",
-    "url": "https://weixin.sogou.com/weixin?type=2&query=%E8%8A%AF%E7%89%87%E9%87%8C%E6%9C%80%E8%B4%B5%E7%9A%84%E4%B8%8D%E6%98%AF%E6%99%B6%E4%BD%93%E7%AE%A1%2C%E6%98%AFMetallization"
+    "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B8%80%E6%96%87%E8%AE%B2%E9%80%8F%E5%A4%A7%E9%A9%AC%E5%A3%AB%E9%9D%A9%E5%B7%A5%E8%89%BA%E5%85%A8%E8%A7%A3%E6%9E%90"
+  },
+  {
+    "title": "NBTI:为什么 PMOS 会越用越慢?——从失效机理到 Fab 工艺改善",
+    "digest": "一、先把现象说清楚:PMOS 是怎么＂变慢＂的NBTI 的全称是 Negative Bias Temperature Instability,中文叫负偏压温度不稳定性....",
+    "account": "硅基火花",
+    "date": "2026-10-12",
+    "thumb": "assets/thumbs/thumb-2.jpg",
+    "url": "https://weixin.sogou.com/weixin?type=2&query=NBTI%3A%E4%B8%BA%E4%BB%80%E4%B9%88%20PMOS%20%E4%BC%9A%E8%B6%8A%E7%94%A8%E8%B6%8A%E6%85%A2%3F%E2%80%94%E2%80%94%E4%BB%8E%E5%A4%B1%E6%95%88%E6%9C%BA%E7%90%86%E5%88%B0%20F"
+  },
+  {
+    "title": "55nm CMOS 深度解析:LVT、SVT、HVT 为什么要分三种?Fab 如何通过工艺控制 Vt?",
+    "digest": "打开一颗 55nm 的芯片版图,你会看到一个矛盾:CPU 核里的晶体管在拼命冲频率,而旁边待机模块里的晶体管正躺在＂睡眠＂里几...",
+    "account": "硅基火花",
+    "date": "2026-10-13",
+    "thumb": "assets/thumbs/thumb-3.jpg",
+    "url": "https://weixin.sogou.com/weixin?type=2&query=55nm%20CMOS%20%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%3ALVT%E3%80%81SVT%E3%80%81HVT%20%E4%B8%BA%E4%BB%80%E4%B9%88"
+  },
+  {
+    "title": "Native MOS 为什么接近 0V 就能导通?从阈值电压到 Fab 制造工艺,一文讲透",
+    "digest": "同一块晶圆、同一套工艺、同样的栅长——为什么有的 NMOS 要 0.45V 才开,有的在 0V 附近就通了?图 1 · 同样是 NMOS、结构相...",
+    "account": "硅基火花",
+    "date": "2026-10-17",
+    "thumb": "assets/thumbs/thumb-4.jpg",
+    "url": "https://weixin.sogou.com/weixin?type=2&query=Native%20MOS%20%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A5%E8%BF%91%200V%20%E5%B0%B1%E8%83%BD%E5%AF%BC%E9%80%9A%3F%E4%BB%8E%E9%98%88%E5%80%BC%E7%94%B5%E5%8E%8B"
+  },
+  {
+    "title": "MOS静态漏电Ioff机理",
+    "digest": "详细文章更新啦—>一文理解MOSFET 关断漏电机理",
+    "account": "硅基火花",
+    "date": "2026-10-18",
+    "thumb": "assets/thumbs/thumb-5.jpg",
+    "url": "https://weixin.sogou.com/weixin?type=2&query=MOS%E9%9D%99%E6%80%81%E6%BC%8F%E7%94%B5Ioff%E6%9C%BA%E7%90%86"
   },
   {
     "title": "一文搞懂 SMT 应力记忆技术",
     "digest": "在半导体工艺里,想让晶体管跑得更快,有个非常直接的办法:把沟道＂拉一拉＂或者＂压一压＂.这就是应力工程(Strain ...",
     "account": "硅基火花",
     "date": "2026-10-05",
-    "thumb": "assets/thumbs/thumb-2.jpg",
+    "thumb": "assets/thumbs/thumb-6.jpg",
     "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%20SMT%20%E5%BA%94%E5%8A%9B%E8%AE%B0%E5%BF%86%E6%8A%80%E6%9C%AF"
-  },
-  {
-    "title": "半导体 Etch Box 明暗表怎么看?一文搞懂 Mask、Tone、PHOTO 与 ETCH 的关系",
-    "digest": "第一次拿到 Etch Box 明暗表的人,都会本能地把它当成一张＂图例对照表＂:绿色等于保留,白色等于刻掉.结果第二天去对实测数...",
-    "account": "硅基火花",
-    "date": "2026-10-11",
-    "thumb": "assets/thumbs/thumb-3.jpg",
-    "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%8D%8A%E5%AF%BC%E4%BD%93%20Etch%20Box%20%E6%98%8E%E6%9A%97%E8%A1%A8%E6%80%8E%E4%B9%88%E7%9C%8B%3F%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%20Mask%E3%80%81"
-  },
-  {
-    "title": "BCD工艺: Bipolar + CMOS + DMOS",
-    "digest": "BCD工艺流程深度解析:一颗电源芯片背后的三重世界",
-    "account": "硅基火花",
-    "date": "2026-09-30",
-    "thumb": "assets/thumbs/thumb-4.jpg",
-    "url": "https://weixin.sogou.com/weixin?type=2&query=BCD%E5%B7%A5%E8%89%BA%3A%20Bipolar%20%2B%20CMOS%20%2B%20DMOS"
   }
 ]
