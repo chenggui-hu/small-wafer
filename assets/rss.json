@@ -1,0 +1,116 @@
+{
+    "updated":  "2026-10-24 22:00",
+    "note":  "每周一 07:00 自动更新",
+    "sources":  [
+                    "异次元软件世界",
+                    "拾月的博客",
+                    "阮一峰的网络日志"
+                ],
+    "items":  [
+                  {
+                      "rank":  1,
+                      "title":  "科技爱好者周刊（第 416 期）：编程已经面目全非",
+                      "url":  "http://www.ruanyifeng.com/blog/2026/10/weekly-issue-416.html",
+                      "source":  "阮一峰的网络日志",
+                      "date":  "2026-10-23"
+                  },
+                  {
+                      "rank":  2,
+                      "title":  "你不知道的客户端开发：选型、原生、多端与借力",
+                      "url":  "https://tw93.fun/2026-10-22/desktop.html",
+                      "source":  "拾月的博客",
+                      "date":  "2026-10-22"
+                  },
+                  {
+                      "rank":  3,
+                      "title":  "年度低价！哔哩 B 站大会员 + 送京东 PLUS 年卡优惠 (支持电视端)",
+                      "url":  "https://www.iplaysoft.com/p/bilibili-vip",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-19"
+                  },
+                  {
+                      "rank":  4,
+                      "title":  "微软死磕优化？新版 Win11 提速 20%，比过去省出 2GB 内存",
+                      "url":  "https://www.iplaysoft.com/news/6631",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-19"
+                  },
+                  {
+                      "rank":  5,
+                      "title":  "腾讯 WorkBuddy 免费白嫖 DeepSeek 新模型 (国产 Codex / Claude Code 替代)",
+                      "url":  "https://www.iplaysoft.com/workbuddy.html",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-19"
+                  },
+                  {
+                      "rank":  6,
+                      "title":  "科技爱好者周刊（第 415 期）：3D 版《看不见的城市》",
+                      "url":  "http://www.ruanyifeng.com/blog/2026/10/weekly-issue-415.html",
+                      "source":  "阮一峰的网络日志",
+                      "date":  "2026-10-16"
+                  },
+                  {
+                      "rank":  7,
+                      "title":  "双 11 打折好价整理！全网视频 VIP / 网盘会员 / 软件打折都在这了…",
+                      "url":  "https://www.iplaysoft.com/1111.html",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-15"
+                  },
+                  {
+                      "rank":  8,
+                      "title":  "金山 WPS 大会员 (含AI + 超会) VIP 必入低价优惠 - 送京东 PLUS / 喜马 / 网易云",
+                      "url":  "https://www.iplaysoft.com/p/wps-vip",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-14"
+                  },
+                  {
+                      "rank":  9,
+                      "title":  "首发！双 11 红包开领啦~ 积少成多！每天3次 / 可当现金",
+                      "url":  "https://www.iplaysoft.com/news/3252",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-14"
+                  },
+                  {
+                      "rank":  10,
+                      "title":  "爱奇艺 (电视端) VIP 年卡+送京东 PLUS 会员优惠 (年度低价)",
+                      "url":  "https://www.iplaysoft.com/news/4313",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-14"
+                  },
+                  {
+                      "rank":  11,
+                      "title":  "免费开源版 Adobe 全家桶！ArtCraft 像素级复刻 PS / AE / PR / AI 等软件",
+                      "url":  "https://www.iplaysoft.com/artcraft.html",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-14"
+                  },
+                  {
+                      "rank":  12,
+                      "title":  "腾讯视频 SVIP 超级会员年卡优惠，历史低价！(支持 TV 电视端)",
+                      "url":  "https://www.iplaysoft.com/p/txsp-vip",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-14"
+                  },
+                  {
+                      "rank":  13,
+                      "title":  "绝对值！夸克网盘 SVIP 会员优惠年卡打折！6TB 大空间 / 不限速 / 离线下载",
+                      "url":  "https://www.iplaysoft.com/p/quark-svip",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-14"
+                  },
+                  {
+                      "rank":  14,
+                      "title":  "百度网盘 SVIP 超级会员年卡历史低价 (送 B 站会员联名)",
+                      "url":  "https://www.iplaysoft.com/p/baiduwangpan-svip",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-14"
+                  },
+                  {
+                      "rank":  15,
+                      "title":  "复旦「学术版 Codex」客户端上线！送 1 万积分，还可领会员优惠",
+                      "url":  "https://www.iplaysoft.com/p/qiewenpaper-codex",
+                      "source":  "异次元软件世界",
+                      "date":  "2026-10-13"
+                  }
+              ]
+}

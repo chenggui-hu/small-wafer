@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>chengguihu</title>
   <meta name="description" content="记录个人生活。" />
-  <link rel="stylesheet" href="css/style.css?v=20261024a" />
+  <link rel="stylesheet" href="css/style.css?v=20261024b" />
 </head>
 <body>
   <!-- 背景音乐 -->
@@ -109,6 +109,8 @@
       <div class="webapp-group" id="webapps-media">
         <h3>📰 影音 &amp; 娱乐</h3>
         <div class="webapp-list">
+          <a class="webapp-chip" href="https://zoo.ink/tvbox.html" target="_blank" rel="noopener"><img class="webapp-icon" src="assets/icons/zooink.png" alt="" loading="lazy" />TvBox 资源</a>
+          <a class="webapp-chip" href="https://www.yfsp.tv/" target="_blank" rel="noopener"><img class="webapp-icon" src="assets/icons/yfsp.png" alt="" loading="lazy" />影视Fans</a>
           <a class="webapp-chip" href="https://www.douyin.com" target="_blank" rel="noopener"><img class="webapp-icon" src="assets/icons/douyin.png" alt="" loading="lazy" />抖音</a>
           <a class="webapp-chip" href="http://www.bilibili.com" target="_blank" rel="noopener"><img class="webapp-icon" src="assets/icons/bilibili.png" alt="" loading="lazy" />B站</a>
           <a class="webapp-chip" href="https://www.seedhub.cc" target="_blank" rel="noopener"><img class="webapp-icon" src="assets/icons/seedhub.png" alt="" loading="lazy" />seedhub</a>
@@ -121,6 +123,15 @@
         </div>
       </div>
     </div>
+
+    <!-- RSS 订阅文章 -->
+    <div class="rss-card">
+      <div class="rss-head">
+        <h3>📰 RSS 订阅</h3>
+        <span class="rss-updated" id="rssUpdated"></span>
+      </div>
+      <ul class="rss-list" id="rssList"></ul>
+    </div>
   </section>
 
   <!-- 页脚 -->
@@ -130,5 +141,6 @@
   </footer>
 
   <script src="js/main.js?v=20261007i"></script>
+  <script src="js/rss-feed.js?v=20261024a"></script>
 </body>
 </html>
