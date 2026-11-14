@@ -192,44 +192,12 @@
   if (searchForm) {
     var searchMode = "wechat";
     var searchInput = document.getElementById("searchInput");
-    var tabs = searchForm.parentElement.querySelectorAll(".search-tab");
+    var tabs = searchForm.parentElement.querySelectorAll(".search-tab[data-mode]");
 
     var placeholders = {
       wechat: "输入关键词，搜索微信公众号文章",
-      scihub: "输入 DOI（如 10.1038/s41586-020-2649-2）"
+      yuanbao: "输入关键词，用元宝 AI 搜索全网"
     };
-
-    // Sci-Hub 镜像列表：后台提前探测，结果缓存；提交时同步打开窗口（避免弹窗拦截产生 about:blank）
-    var sciHubMirrors = [
-      "https://sci-hub.ren/",
-      "https://sci-hub.ee/",
-      "https://sci-hub.wf/",
-      "https://sci-hub.se/"
-    ];
-    var sciHubBase = sciHubMirrors[0]; // 默认镜像，探测成功后更新
-    var sciHubProbed = false;
-
-    function probeMirror(base) {
-      return new Promise(function (resolve) {
-        var settled = false;
-        var timer = setTimeout(function () { if (!settled) { settled = true; resolve(false); } }, 4000);
-        fetch(base, { mode: "no-cors", cache: "no-store" })
-          .then(function () { if (!settled) { settled = true; clearTimeout(timer); resolve(true); } })
-          .catch(function () { if (!settled) { settled = true; clearTimeout(timer); resolve(false); } });
-      });
-    }
-
-    function probeSciHub() {
-      if (sciHubProbed) return;
-      sciHubProbed = true;
-      (function next(idx) {
-        if (idx >= sciHubMirrors.length) return; // 全部失败则保留默认
-        probeMirror(sciHubMirrors[idx]).then(function (ok) {
-          if (ok) { sciHubBase = sciHubMirrors[idx]; }
-          else { next(idx + 1); }
-        });
-      })(0);
-    }
 
     tabs.forEach(function (tab) {
       tab.addEventListener("click", function () {
@@ -237,7 +205,6 @@
         tab.classList.add("active");
         searchMode = tab.getAttribute("data-mode");
         searchInput.placeholder = placeholders[searchMode];
-        if (searchMode === "scihub") { probeSciHub(); } // 切到 Sci-Hub 时后台探测
         searchInput.focus();
       });
     });
@@ -247,9 +214,9 @@
       var q = searchInput.value.trim();
       if (!q) { searchInput.focus(); return; }
       var url;
-      if (searchMode === "scihub") {
-        // 同步打开，保证不被弹窗拦截；镜像用后台探测的缓存结果
-        url = sciHubBase + q.replace(/\s+/g, "");
+      if (searchMode === "yuanbao") {
+        // 元宝搜索（腾讯 so.qq.com）
+        url = "https://so.qq.com/ihome?q=" + encodeURIComponent(q);
       } else {
         // 搜狗微信搜索：type=2 文章
         url = "https://weixin.sogou.com/weixin?type=2&query=" + encodeURIComponent(q);
